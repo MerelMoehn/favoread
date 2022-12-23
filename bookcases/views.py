@@ -44,10 +44,10 @@ class SubmitBook(View):
                 user_bookcase = Bookcase.objects.get(owner=current_user)
         
             except ObjectDoesNotExist:
-                new_bookcase = Bookcase.objects.create(owner=request.user)
+                user_bookcase = Bookcase.objects.create(owner=request.user)
 
         # to add the book as an instance to the Bookcase_book model
-            new_bookcase_book = Bookcase_book.objects.create(book_id=new_book, bookcase_id=new_bookcase )
+            new_bookcase_book = Bookcase_book.objects.create(book_id=new_book, bookcase_id=user_bookcase )
 
         else:
             submit_form = SubmitForm()
