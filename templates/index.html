@@ -4,10 +4,22 @@
 
 <div class="container-fluid">
     <div class="row">
-
-        <!-- <div class="col-md-6">
-            <img src="..." class="img-fluid" alt="...">
-        </div> -->
+        <div class="row">
+            <div class="col-md-6 text-center align-self-center">
+                <h1>Welcome to Favoreads</h1>
+                <p>The place for daily book inspiration.</p>
+                {% if user.is_authenticated %}
+                <p>Is this your first time here? Start by submitting a book!</p>
+                <a class="btn btn-primary" href="{% url 'submit_book' %}">Submit a book!</a>
+                {% else %}
+                <p>Is this your first time here? Let's get you registered!</p>
+                <a class="btn btn-primary" href="{% url 'account_signup' %}">Let's get started!</a>
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+            <img src="https://res.cloudinary.com/duz5vkvkt/image/upload/v1671793481/hero2_iyfr4s.jpg" class="img-fluid" alt="hero image">
+            </div>
+        </div>
             <div class="row">
                 {% for book in book_list %}
                 <div class="col-md-4">
