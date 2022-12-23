@@ -3,6 +3,7 @@ from django.views import generic, View
 from .models import Book, Bookcase, Bookcase_book
 from django.contrib.auth.models import User
 from .forms import SubmitForm
+from django.core.exceptions import ObjectDoesNotExist
 
 
 class BookList(generic.ListView):
@@ -38,15 +39,15 @@ class SubmitBook(View):
             new_book = submit_form.save()
 
         # to check whether user has a bookcase already, if not, create a Bookcase instance
-            owner = request.user.id
+            current_user = get_object_or_404(User, username=request.user.username)
             try:
-                user_bookcase = bookcase.filter(owner=owner)
+                user_bookcase = Bookcase.objects.get(owner=current_user)
         
             except ObjectDoesNotExist:
-                Bookcase.objects.create(owner=request.user)
+                new_bookcase = Bookcase.objects.create(owner=request.user)
 
         # to add the book as an instance to the Bookcase_book model
-            bookcase_book = Bookcase_book.objects.create(book_id=new_book)
+            new_bookcase_book = Bookcase_book.objects.create(book_id=new_book, bookcase_id=new_bookcase )
 
         else:
             submit_form = SubmitForm()
