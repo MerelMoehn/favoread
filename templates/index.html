@@ -5,26 +5,24 @@
 <div class="container-fluid">
     <div class="row">
 
-        
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                <h2>Welcome to FavoReads</h2>
-            </div>
+        <!-- <div class="col-md-6">
+            <img src="..." class="img-fluid" alt="...">
+        </div> -->
             <div class="row">
                 {% for book in book_list %}
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
-                                {% if "placeholder" in book.featured_image.url %}
+                                {% if "book_preview" in book.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                    src=https://res.cloudinary.com/duz5vkvkt/image/upload/v1671792496/book_preview_kvptjk.jpg>
                                 {% else %}
                                 <img class="card-img-top" src=" {{ book.featured_image.url }}">
                                 {% endif %}
-                                <div class="image-flash">
+                                <a href="{% url 'book_detail' book.slug  %}" class="post-link">
                                     <p class="author">Author: {{ book.author }}</p>
-                                </div>
+                                </a>
                             </div>
                 {% endfor%}
 

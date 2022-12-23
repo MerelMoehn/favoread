@@ -58,8 +58,15 @@ class SubmitBook(View):
         )
 
 
-class BookcaseList(generic.ListView):
-    model = Bookcase()
-    queryset = Bookcase.objects.order_by('-created_on')
-    template_name = 'bookcase_detail.html'
-    paginate_by = 6
+class BookDetail(View):
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Book.objects.filter(approved=True)
+        book = get_object_or_404(queryset, slug=slug)
+
+        return render(
+            request,
+            "book_detail.html",
+            {
+                "book": book,
+            },
+        )

@@ -11,7 +11,7 @@ class Book(models.Model):
     slug = models.SlugField(max_length=1000, unique=True)
     author = models.CharField(max_length=100)
     excerpt = models.TextField()
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField('image', default='book_preview')
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
