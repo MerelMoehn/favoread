@@ -8,7 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 class BookList(generic.ListView):
     model = Book
-    queryset = Book.objects.filter(approved=True).order_by('-created_on')
+    queryset = Book.objects.filter(approved=True).order_by('-created_on')[:3]
     template_name = 'index.html'
     paginate_by = 6
 
