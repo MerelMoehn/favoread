@@ -10,17 +10,39 @@
                 <p>The place for daily book inspiration.</p>
                 {% if user.is_authenticated %}
                 <p>Is this your first time here? Start by submitting a book!</p>
-                <a class="btn btn-primary" href="{% url 'submit_book' %}">Submit a book!</a>
+                <a class="btn btn-color" href="{% url 'submit_book' %}">Submit a book!</a>
                 {% else %}
                 <p>Is this your first time here? Let's get you registered!</p>
-                <a class="btn btn-primary" href="{% url 'account_signup' %}">Let's get started!</a>
+                <a class="btn btn-color" href="{% url 'account_signup' %}">Let's get started!</a>
                 {% endif %}
             </div>
             <div class="col-md-6">
-            <img src="https://res.cloudinary.com/duz5vkvkt/image/upload/v1671793481/hero2_iyfr4s.jpg" class="img-fluid" alt="hero image">
+                <img src="https://res.cloudinary.com/duz5vkvkt/image/upload/v1671797487/hero3_xgom24.jpg"
+                    class="img-fluid" alt="hero image">
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md text-center">
+                <i class="fa-2x fas fa-book"></i>
+                <h4>Add Books</h4>
+                <p>Contribute to the book database by uploading a book. Approval happens by the admin</p>
+            </div>
+            <div class="col-md text-center">
+                <i class="fa-2x fas fa-book-reader"></i>
+                <h4>Manage Your Bookcase</h4>
+                <p>Create your own personal bookcase and share what you're reading with others.</p>
+            </div>
+            <div class="col-md text-center">
+                <i class="fa-2x fas fa-lightbulb"></i>
+                <h4>Get Inspired</h4>
+                <p>Browse other users and see their bookcase to get inspiration for your next book.</p>
+            </div>
+        </div>
+
+        <div class="col-12 mt-3 left">
             <div class="row">
+                <h4>Can't wait to get inspired?<small class="text-muted">Three books you want to read</small></h4>
                 {% for book in book_list %}
                 <div class="col-md-4">
                     <div class="card mb-4">
@@ -32,16 +54,39 @@
                                 {% else %}
                                 <img class="card-img-top" src=" {{ book.featured_image.url }}">
                                 {% endif %}
-                                <a href="{% url 'book_detail' book.slug  %}" class="post-link">
+                                <div class="image-flash">
                                     <p class="author">Author: {{ book.author }}</p>
-                                </a>
+                                </div>
                             </div>
-                {% endfor%}
+                            <a href="{% url 'book_detail' book.slug  %}">
+                                <h2 class="card-title">{{ book.title }}</h2>
+                            </a>
+                            <p class="card-text">{{ book.excerpt }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
 
             </div>
         </div>
     </div>
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
 
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 </div>
 
-{%endblock%}
+    {%endblock%}
