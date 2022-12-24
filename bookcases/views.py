@@ -13,13 +13,6 @@ class BookList(generic.ListView):
     paginate_by = 6
 
 
-class UserList(generic.ListView):
-    model = User
-    queryset = User.objects.all()
-    template_name = 'get_inspired.html'
-    paginate_by = 6
-
-
 class SubmitBook(View):
 
     def get(self, request, *args, **kwargs):
@@ -70,3 +63,9 @@ class BookDetail(View):
                 "book": book,
             },
         )
+
+
+class BookcaseList(generic.ListView):
+    model = Bookcase
+    queryset = Bookcase.objects.all()
+    template_name = 'get_inspired.html'
