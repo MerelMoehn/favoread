@@ -3,29 +3,31 @@
 {% block content %}
 
 <div class="container-fluid">
-    <row>
-        <div class="col">
-            <img class="hero-bookcase" src="https://res.cloudinary.com/duz5vkvkt/image/upload/v1671881765/bookcase2_ecevj7.png" class="img-fluid" alt="Image of Bookcase">
+    <div class="row text-center">
+        <div class="col mt-5">
+            <h1>Get Inspired <small class="text-muted">Browse Bookcases</small></h1>
         </div>
-    </row>
-    
-    <div class="row mt-5">
-        {% for bookcase in bookcase_list %}
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4 align-self-center">
-                <img src="https://res.cloudinary.com/duz5vkvkt/image/upload/v1671882531/bookcasesmall_ltw4ts.jpg" class="img-fluid rounded-start" alt="Image of Bookcase">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Bookcase of: {{ bookcase.owner }}</h5>
-                  <p class="card-text"><small class="text-muted">Bookcase created on: {{ bookcase.created_on }}</small></p>
-                  <a class="btn btn-color" href="{% url 'bookcase_detail' bookcase.slug  %}">See Bookcase</a>
+
+        <div class="row mt-5">
+            {% for bookcase in bookcase_list %}
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4 align-self-center">
+                        <img src="https://res.cloudinary.com/duz5vkvkt/image/upload/v1671882531/bookcasesmall_ltw4ts.jpg"
+                            class="img-fluid rounded-start" alt="Image of Bookcase">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Bookcase of: {{ bookcase.owner }}</h5>
+                            <p class="card-text"><small class="text-muted">Bookcase created on:
+                                    {{ bookcase.created_on }}</small></p>
+                            <a class="btn btn-color" href="{% url 'bookcase_detail' bookcase.slug  %}">See Bookcase</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        {% endfor%}
+            {% endfor%}
+        </div>
     </div>
 </div>
 
