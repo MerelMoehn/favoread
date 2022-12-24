@@ -69,3 +69,17 @@ class BookcaseList(generic.ListView):
     model = Bookcase
     queryset = Bookcase.objects.all()
     template_name = 'get_inspired.html'
+
+
+class BookcaseBookList(View):
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Bookcase.objects.all()
+        bookcase_books = get_object_or_404(queryset, slug=slug)
+
+        return render(
+            request,
+            "bookcase_detail.html",
+            {
+                "books": bookcase_books,
+            },
+        )
