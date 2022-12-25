@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
-from .models import Book, Bookcase_book
+from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from .forms import SubmitForm
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib import messages
+from .models import Book, Bookcase_book
+from .forms import SubmitForm
 
 
 class BookList(generic.ListView):
@@ -55,6 +57,21 @@ class BookDetail(View):
                 "book": book,
             },
         )
+
+
+class AddBook(View):
+
+    def post(self, request, slug, *args, **kwargs):
+        current_user = request.user
+        book_to_add = get_object_or_404(Book, slug=slug)
+        
+        if not Bookcase_book.objects.filter(bookcase_owner=current_user, book_id=book_to_add).exists():
+            new_bookcase_book = Bookcase_book.objects.create(book_id=book_to_add, bookcase_owner=current_user)
+            messages.success(request, 'The book is added to your bookcase')
+            return HttpResponseRedirect(reverse('book_detail', args=[slug]))
+        else:
+            messages.error(request, 'This book is already in your bookcase')
+            return HttpResponseRedirect(reverse('book_detail', args=[slug]))
 
 
 class BookcaseOwners(generic.ListView):
