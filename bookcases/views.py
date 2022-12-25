@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
-from .models import Book, Bookcase, Bookcase_book
+from .models import Book, Bookcase_book
 from django.contrib.auth.models import User
 from .forms import SubmitForm
 from django.core.exceptions import ObjectDoesNotExist
@@ -31,16 +31,8 @@ class SubmitBook(View):
         if submit_form.is_valid():
             new_book = submit_form.save()
 
-        # to check whether user has a bookcase already, if not, create a Bookcase instance
-            current_user = get_object_or_404(User, username=request.user.username)
-            try:
-                user_bookcase = Bookcase.objects.get(owner=current_user)
-        
-            except ObjectDoesNotExist:
-                user_bookcase = Bookcase.objects.create(owner=request.user)
-
         # to add the book as an instance to the Bookcase_book model
-            new_bookcase_book = Bookcase_book.objects.create(book_id=new_book, bookcase_id=user_bookcase )
+            new_bookcase_book = Bookcase_book.objects.create(book_id=new_book, bookcase_owner=request.user)
 
         else:
             submit_form = SubmitForm()
@@ -65,16 +57,15 @@ class BookDetail(View):
         )
 
 
-class BookcaseList(generic.ListView):
-    model = Bookcase
-    queryset = Bookcase.objects.all()
+class BookcaseOwners(generic.ListView):
+    model = Bookcase_book
+    queryset = Bookcase_book.objects.all()
     template_name = 'get_inspired.html'
 
-
 class BookcaseBookList(View):
-    def get(self, request, slug, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         queryset = Bookcase.objects.all()
-        bookcase_books = get_object_or_404(queryset, slug=slug)
+        bookcase_books = get_object_or_404(queryset, bookcase_owner=request.user)
 
         return render(
             request,

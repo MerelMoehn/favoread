@@ -14,6 +14,7 @@ class Book(models.Model):
     featured_image = CloudinaryField('image', default='book_preview')
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
+    likes = models.ManyToManyField(User, related_name="book_like", blank=True)
 
     class Meta:
         ordering = ["-created_on"]
@@ -28,27 +29,8 @@ class Book(models.Model):
         return super().save(*args, **kwargs)
 
 
-class Bookcase(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookcase")
-    slug = models.SlugField(max_length=200, unique=True)
-    likes = models.ManyToManyField(User, related_name="bookcase_like", blank=True)
-    created_on = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.owner}'s bookcase"
-
-    def number_of_likes(self):
-        return self.likes.count()
-
-    # auto generate slug based on title. Based on Youtube video Django World
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.owner)
-        return super().save(*args, **kwargs)
-
-
 class Bookcase_book(models.Model):
-    bookcase_id = models.ForeignKey(Bookcase, on_delete=models.CASCADE, related_name="bookcase_books")
+    bookcase_owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookcase_owner")
     book_id = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="books")
     status = models.IntegerField(choices=READ_STATUS, default=0)
     updated_on = models.DateTimeField(auto_now=True)
@@ -58,4 +40,4 @@ class Bookcase_book(models.Model):
         ordering = ["-updated_on"]
 
     def __str__(self):
-        return f"{self.book_id} in {self.bookcase_id}"
+        return f"{self.book_id} in {self.bookcase_id}'s bookcase"

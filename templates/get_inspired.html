@@ -9,7 +9,7 @@
         </div>
 
         <div class="row mt-5">
-            {% for bookcase in bookcase_list %}
+            {% for owner in bookcase_owners %}
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4 align-self-center">
@@ -18,10 +18,8 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Bookcase of: {{ bookcase.owner }}</h5>
-                            <p class="card-text"><small class="text-muted">Bookcase created on:
-                                    {{ bookcase.created_on }}</small></p>
-                            <a class="btn btn-color" href="{% url 'bookcase_detail' bookcase.slug  %}">See Bookcase</a>
+                            <h5 class="card-title">Bookcase of: {{ bookcase_book.bookcase_owner }}</h5>
+                            <a class="btn btn-color" href="{% url 'bookcase_detail' bookcase.owner  %}">See Bookcase</a>
                         </div>
                     </div>
                 </div>
