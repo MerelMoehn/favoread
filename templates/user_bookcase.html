@@ -2,6 +2,28 @@
 {% block content %}
 
 <div class="container">
- 
+    <div class="row text-center">
+        <div class="col mt-5">
+            <h1>Welcome to your bookcase! <small class="text-muted">{{ user.username }}</small></h1>
+        </div>
+        <div class="row mt-5">
+            {% for book in books %}
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4 align-self-center">
+                        <img src="https://res.cloudinary.com/duz5vkvkt/image/upload/v1671882531/bookcasesmall_ltw4ts.jpg"
+                            class="img-fluid rounded-start" alt="Image of Bookcase">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"> {{ book.book_id }} </h5>
+                            <a class="btn btn-color" href="#">See book</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+
 </div>
 {%endblock%}

@@ -62,15 +62,17 @@ class BookcaseOwners(generic.ListView):
     queryset = Bookcase_book.objects.all()
     template_name = 'get_inspired.html'
 
-class BookcaseBookList(View):
+
+class UserBookcase(View):
     def get(self, request, *args, **kwargs):
-        queryset = Bookcase.objects.all()
-        bookcase_books = get_object_or_404(queryset, bookcase_owner=request.user)
+        current_owner = request.user
+        bookcase_books = Bookcase_book.objects.filter(bookcase_owner=current_owner)
 
         return render(
             request,
-            "bookcase_detail.html",
+            "user_bookcase.html",
             {
                 "books": bookcase_books,
+                "user": current_owner,
             },
         )

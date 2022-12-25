@@ -40,4 +40,4 @@ class Bookcase_book(models.Model):
         ordering = ["-updated_on"]
 
     def __str__(self):
-        return f"{self.book_id} in {self.bookcase_id}'s bookcase"
+        return f"{self.book_id} in {self.bookcase_owner}'s bookcase"
