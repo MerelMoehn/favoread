@@ -20,7 +20,7 @@ class Book(models.Model):
         ordering = ["-created_on"]
 
     def __str__(self):
-        return f"Book: {self.title} by {self.author}"
+        return f"{self.title} by {self.author}"
 
     # auto generate slug based on title. Based on Youtube video Django World
     def save(self, *args, **kwargs):

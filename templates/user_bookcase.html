@@ -16,9 +16,27 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title"> {{ book.book_id }} </h5>
-                            <a class="btn" href="#">{{ book.get_status_display }}</a>
-                            <a class="btn btn-delete" href="#">Delete</a>
+                            <div class="row">
+                                <div class="col-md-6 offset-md-6">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                            id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            {{ book.get_status_display }}
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                            <button class="dropdown-item" type="button">Read</button>
+                                            <button class="dropdown-item" type="button">Reading</button>
+                                            <button class="dropdown-item" type="button">Still to read</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 class="book-title"> {{ book.book_id }} </h5>
+                            <form action="{% url 'delete_book' book.book_id %}" method="POST">
+                                {% csrf_token %}
+                                <button class="btn btn-delete" type="submit" name="book_id" value="{{book.id}}">Delete</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -26,5 +44,5 @@
             {% endfor%}
         </div>
 
-</div>
-{%endblock%}
+    </div>
+    {%endblock%}
