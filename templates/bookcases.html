@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row text-center">
+        <div class="col mt-5">
+            <h1>Get Inspired <small class="text-muted">Browse Bookcases</small></h1>
+        </div>
+
+        <div class="row mt-5">
+            {% for book in bookcases %}
+            <p>{{ book.bookcase_owner }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+    </div>
+</div>
+
+{%endblock%}

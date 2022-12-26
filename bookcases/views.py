@@ -59,6 +59,13 @@ class BookDetail(View):
         )
 
 
+class Bookcases(generic.ListView):
+    model = Bookcase_book
+    queryset = Bookcase_book.objects.all()
+    template_name = 'bookcases.html'
+    paginate_by = 6
+
+
 class AddBook(View):
 
     def post(self, request, slug, *args, **kwargs):
@@ -72,12 +79,6 @@ class AddBook(View):
         else:
             messages.error(request, 'This book is already in your bookcase')
             return HttpResponseRedirect(reverse('book_detail', args=[slug]))
-
-
-class BookcaseOwners(generic.ListView):
-    model = Bookcase_book
-    queryset = Bookcase_book.objects.all()
-    template_name = 'get_inspired.html'
 
 
 class UserBookcase(View):
