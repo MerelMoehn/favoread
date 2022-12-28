@@ -34,7 +34,7 @@ class SubmitBook(View):
             new_book = submit_form.save()
 
         # to add the book as an instance to the Bookcase_book model
-            new_bookcase_book = Bookcase_book.objects.create(book_id=new_book, bookcase_owner=request.user)
+            new_bookcase_book = Bookcase_book.objects.create(book=new_book, bookcase_owner=request.user)
 
         else:
             submit_form = SubmitForm()
@@ -72,8 +72,8 @@ class AddBook(View):
         current_user = request.user
         book_to_add = get_object_or_404(Book, slug=slug)
         
-        if not Bookcase_book.objects.filter(bookcase_owner=current_user, book_id=book_to_add).exists():
-            new_bookcase_book = Bookcase_book.objects.create(book_id=book_to_add, bookcase_owner=current_user)
+        if not Bookcase_book.objects.filter(bookcase_owner=current_user, book=book_to_add).exists():
+            new_bookcase_book = Bookcase_book.objects.create(book=book_to_add, bookcase_owner=current_user)
             messages.success(request, 'The book is added to your bookcase')
             return HttpResponseRedirect(reverse('book_detail', args=[slug]))
         else:
@@ -100,6 +100,6 @@ class DeleteBook(View):
 
     def post(self, request, book_id, *args, **kwargs):
         current_user = request.user
-        book_to_delete = get_object_or_404(Bookcase_book, book_id=book_id)
+        book_to_delete = get_object_or_404(Bookcase_book, book=book_id)
         book_to_delete.delete()
         return HttpResponseRedirect(reverse('user_bookcase'))
