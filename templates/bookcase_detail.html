@@ -1,8 +1,36 @@
 {% extends "base.html" %}
-
 {% block content %}
-<h1> These are all the books in their respective bookcases</h1>
-{% for bookcase_book in bookcase_book_list %}
-<p>{{ bookcase_book.book_id }}</p>
 
-{%endblock%}
+<div class="container">
+    <div class="row text-center">
+        <div class="col mt-5">
+            <h1>This is the bookcase of <small class="text-muted">{{ user }}</small></h1>
+        </div>
+        <div class="row mt-5">
+            {% for book in books %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="image-container">
+                            {% if "book_preview" in book.featured_image.url %}
+                            <img class="card-img-top"
+                                src=https://res.cloudinary.com/duz5vkvkt/image/upload/v1671792496/book_preview_kvptjk.jpg>
+                            {% else %}
+                            <img class="card-img-top" src=" {{ book.featured_image.url }}">
+                            {% endif %}
+                            <div class="image-flash">
+                                <p class="author">Author: {{ book.author }}</p>
+                            </div>
+                        </div>
+                        <a href="{% url 'book_detail' book.slug  %}">
+                            <h2 class="book-title">{{ book.title }}</h2>
+                        </a>
+                        <p class="card-text">{{ book.excerpt }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    {%endblock%}
