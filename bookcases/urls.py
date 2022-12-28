@@ -9,5 +9,6 @@ urlpatterns = [
     # path('bookcase_detail/', views.VisitBookcase.as_view(), name='bookcase_detail'),
     path('<slug:slug>/', views.BookDetail.as_view(), name='book_detail'),
     path('delete/<book>/', views.DeleteBook.as_view(), name='delete_book'),
+    path('update_status/<book>/', views.UpdateStatus.as_view(), name='update_status'),
     path('add/<slug:slug>/', views.AddBook.as_view(), name='add_book')
 ]

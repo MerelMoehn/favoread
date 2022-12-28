@@ -25,9 +25,18 @@
                                             {{ book.get_status_display }}
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                            <button class="dropdown-item" type="button">Read</button>
-                                            <button class="dropdown-item" type="button">Reading</button>
-                                            <button class="dropdown-item" type="button">Still to read</button>
+                                            <form action="{% url 'update_status' book.book.id %}" method="POST">
+                                                {% csrf_token %}
+                                            <button class="dropdown-item" type="submit" name="status" value=2>Read</button>
+                                            </form>
+                                            <form action="{% url 'update_status' book.book.id %}" method="POST">
+                                                {% csrf_token %}
+                                            <button class="dropdown-item" type="submit" name="status" value=1>Reading</button>
+                                            </form>
+                                            <form action="{% url 'update_status' book.book.id %}" method="POST">
+                                                {% csrf_token %}
+                                            <button class="dropdown-item" type="submit" name="status" value=0>Still to read</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -35,7 +44,7 @@
                             <h5 class="book-title"> {{ book.book }} </h5>
                             <form action="{% url 'delete_book' book.book.id %}" method="POST">
                                 {% csrf_token %}
-                                <button class="btn btn-delete" type="submit" name="book" value="{{book.id}}">Delete</button>
+                                <button class="btn btn-delete" type="submit" name="book" value="{{book.book.id}}">Delete</button>
                             </form>
                         </div>
                     </div>

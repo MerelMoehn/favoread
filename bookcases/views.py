@@ -106,6 +106,23 @@ class DeleteBook(View):
         return HttpResponseRedirect(reverse('user_bookcase'))
 
 
+class UpdateStatus(View):
+
+    def post(self, request, book, *args, **kwargs):
+        current_user = request.user
+        book_to_update = get_object_or_404(Bookcase_book, book=book, bookcase_owner=current_user)
+        status_passed = request.GET.get("name")
+        if status_passed == 0:
+            book_to_update.status = 0
+            book_to_update.save()
+        elif status_passed == 1:
+            book_to_update.status = 1
+            book_to_update.save()
+        else:
+            book_to_update.status = 2
+            book_to_update.save()
+        return HttpResponseRedirect(reverse('user_bookcase'))
+
 # class VisitBookcase(View):
 #     def get(self, request, owner, *args, **kwargs):
 #         selected_owner = owner
