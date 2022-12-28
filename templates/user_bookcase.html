@@ -25,15 +25,15 @@
                                             {{ book.get_status_display }}
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                            <form action="{% url 'update_status' book.book.id %}" method="POST">
+                                            <form action="{% url 'update_status' book.book.id %}?status=2" method="POST">
                                                 {% csrf_token %}
                                             <button class="dropdown-item" type="submit" name="status" value=2>Read</button>
                                             </form>
-                                            <form action="{% url 'update_status' book.book.id %}" method="POST">
+                                            <form action="{% url 'update_status' book.book.id %}?status=1" method="POST">
                                                 {% csrf_token %}
                                             <button class="dropdown-item" type="submit" name="status" value=1>Reading</button>
                                             </form>
-                                            <form action="{% url 'update_status' book.book.id %}" method="POST">
+                                            <form action="{% url 'update_status' book.book.id %}?status=0" method="POST">
                                                 {% csrf_token %}
                                             <button class="dropdown-item" type="submit" name="status" value=0>Still to read</button>
                                             </form>
