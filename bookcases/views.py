@@ -61,6 +61,7 @@ class BookDetail(View):
 
 class Bookcases(generic.ListView):
     model = Bookcase_book
+    context_object_name = 'bookcases'
     queryset = Bookcase_book.objects.all()
     template_name = 'bookcases.html'
     paginate_by = 6
@@ -74,10 +75,10 @@ class AddBook(View):
         
         if not Bookcase_book.objects.filter(bookcase_owner=current_user, book=book_to_add).exists():
             new_bookcase_book = Bookcase_book.objects.create(book=book_to_add, bookcase_owner=current_user)
-            messages.success(request, 'The book is added to your bookcase')
+            messages.success(request, 'The book is added to your bookcase', extra_tags='add_book')
             return HttpResponseRedirect(reverse('book_detail', args=[slug]))
         else:
-            messages.error(request, 'This book is already in your bookcase')
+            messages.error(request, 'This book is already in your bookcase', extra_tags='add_book')
             return HttpResponseRedirect(reverse('book_detail', args=[slug]))
 
 
