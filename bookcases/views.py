@@ -85,7 +85,7 @@ class AddBook(View):
 class UserBookcase(View):
     def get(self, request, *args, **kwargs):
         current_owner = request.user
-        bookcase_books = Bookcase_book.objects.filter(bookcase_owner=current_owner)
+        bookcase_books = Bookcase_book.objects.filter(bookcase_owner=current_owner, book__approved=True)
 
         return render(
             request,
