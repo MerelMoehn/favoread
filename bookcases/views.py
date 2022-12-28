@@ -96,10 +96,10 @@ class UserBookcase(View):
         )
 
 
-# class DeleteBook(View):
+class DeleteBook(View):
 
-#     def post(self, request, book_id, *args, **kwargs):
-#         current_user = request.user
-#         book_to_delete = get_object_or_404(Bookcase_book, book_id=book_id)
-#         book_to_delete.delete()
-#         return reverse('user_bookcase')
+    def post(self, request, book_id, *args, **kwargs):
+        current_user = request.user
+        book_to_delete = get_object_or_404(Bookcase_book, book_id=book_id)
+        book_to_delete.delete()
+        return HttpResponseRedirect(reverse('user_bookcase'))

@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                             <h5 class="book-title"> {{ book.book_id }} </h5>
-                            <form action="{% url 'delete_book' book.book_id %}" method="POST">
+                            <form action="{% url 'delete_book' book.book_id.id %}" method="POST">
                                 {% csrf_token %}
                                 <button class="btn btn-delete" type="submit" name="book_id" value="{{book.id}}">Delete</button>
                             </form>

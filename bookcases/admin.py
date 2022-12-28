@@ -6,8 +6,8 @@ from django_summernote.admin import SummernoteModelAdmin
 @admin.register(Book)
 class BookAdmin(SummernoteModelAdmin):
 
-    list_display = ('title', 'author', 'approved', 'created_on')
-    search_fields = ['title', 'author']
+    list_display = ('title', 'author', 'id', 'approved', 'created_on')
+    search_fields = ['title', 'author', 'id']
     list_filter = ('approved', 'created_on')
     actions = ['approve_books']
 
