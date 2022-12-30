@@ -119,15 +119,14 @@ class UpdateStatus(View):
 
 class VisitBookcase(View):
     def get(self, request, owner, *args, **kwargs):
-        selected_owner = owner
-        bookcase_books = Bookcase_book.objects.filter(bookcase_owner=selected_owner, book__approved=True)
-        selected_user = User.objects.filter(id=selected_owner)
+        bookcase_books = Bookcase_book.objects.filter(bookcase_owner=owner, book__approved=True)
+        selected_owner = get_object_or_404(User, id=owner)
 
         return render(
             request,
             "bookcase_detail.html",
             {
                 "books": bookcase_books,
-                "user": selected_user,
+                "bc_owner": selected_owner,
             },
         )
