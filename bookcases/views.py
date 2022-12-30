@@ -116,16 +116,18 @@ class UpdateStatus(View):
         book_to_update.save()
         return HttpResponseRedirect(reverse('user_bookcase'))
 
-# class VisitBookcase(View):
-#     def get(self, request, owner, *args, **kwargs):
-#         selected_owner = owner
-#         bookcase_books = Bookcase_book.objects.filter(bookcase_owner=selected_owner, book__approved=True)
 
-#         return render(
-#             request,
-#             "bookcase_detail.html",
-#             {
-#                 "books": bookcase_books,
-#                 "user": selected_owner,
-#             },
-#         )
+class VisitBookcase(View):
+    def get(self, request, owner, *args, **kwargs):
+        selected_owner = owner
+        bookcase_books = Bookcase_book.objects.filter(bookcase_owner=selected_owner, book__approved=True)
+        selected_user = User.objects.filter(id=selected_owner)
+
+        return render(
+            request,
+            "bookcase_detail.html",
+            {
+                "books": bookcase_books,
+                "user": selected_user,
+            },
+        )
