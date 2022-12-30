@@ -24,6 +24,16 @@ body {
     font-style: italic;
 }
 
+.success{
+    background-color: #D4EDDA;
+    border-color: #1A3E23;
+}
+
+.error{
+    background-color: #F9D8DA;
+    border-color: #380205;
+}
+
 
 
 
