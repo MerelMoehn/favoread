@@ -75,10 +75,10 @@ class AddBook(View):
         
         if not Bookcase_book.objects.filter(bookcase_owner=current_user, book=book_to_add).exists():
             new_bookcase_book = Bookcase_book.objects.create(book=book_to_add, bookcase_owner=current_user)
-            messages.success(request, 'The book is added to your bookcase', extra_tags='add_book')
+            messages.success(request, 'The book is added to your bookcase')
             return HttpResponseRedirect(reverse('book_detail', args=[slug]))
         else:
-            messages.error(request, 'This book is already in your bookcase', extra_tags='add_book')
+            messages.error(request, 'This book is already in your bookcase')
             return HttpResponseRedirect(reverse('book_detail', args=[slug]))
 
 
