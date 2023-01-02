@@ -4,29 +4,29 @@
 <div class="container">
     <div class="row text-center">
         <div class="col mt-5">
-            <h1><small class="text-muted">This is the bookcase of </small>{{ bc_owner.username }}</h1>
+            <h1>This is the bookcase of: {{ bc_owner.username }}</h1>
+            <p>You can click on each book to see the detail page. On this detail page you can add the book to your own bookcase.</p>
         </div>
-        <div class="row mt-5">
+
+        <div class="row mt-5 justify-content-center">
             {% for book in books %}
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="image-container">
-                            {% if "book_preview" in book.book.featured_image.url %}
-                            <img class="card-img-top"
-                                src=https://res.cloudinary.com/duz5vkvkt/image/upload/v1671792496/book_preview_kvptjk.jpg>
-                            {% else %}
-                            <img class="card-img-top" src=" {{ book.featured_image.url }}">
-                            {% endif %}
-                            <div class="image-flash">
-                                <p class="author">Author: {{ book.book.author }}</p>
-                            </div>
+            <div class="card m-2" style="max-width: 200px;">
+                <div class="card-body">
+                    <div class="image-container">
+                        {% if "book_preview" in book.book.featured_image.url %}
+                        <img class="card-img-top"
+                            src=https://res.cloudinary.com/duz5vkvkt/image/upload/v1671792496/book_preview_kvptjk.jpg>
+                        {% else %}
+                        <img class="card-img-top" src=" {{ book.featured_image.url }}">
+                        {% endif %}
+                        <div class="image-flash">
+                            <p class="author">Author: {{ book.book.author }}</p>
                         </div>
-                        <a href="{% url 'book_detail' book.book.slug  %}">
-                            <h2 class="book-title">{{ book.book.title }}</h2>
-                        </a>
-                        <p class="card-text">{{ book.book.excerpt }}</p>
                     </div>
+                    <a href="{% url 'book_detail' book.book.slug  %}">
+                        <h2 class="book-title">{{ book.book.title }}</h2>
+                        <p class="card-text">{{ book.book.excerpt }}</p>
+                    </a>
                 </div>
             </div>
             {% empty %}

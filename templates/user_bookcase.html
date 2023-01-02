@@ -50,8 +50,8 @@
                                             <form action="{% url 'update_status' book.book.id %}?status=0"
                                                 method="POST">
                                                 {% csrf_token %}
-                                                <button class="dropdown-item" type="submit" name="status" value=0>Still
-                                                    to read</button>
+                                                <button class="dropdown-item" type="submit" name="status" value=0>
+                                                    Not started</button>
                                             </form>
                                         </div>
                                     </div>
