@@ -17,10 +17,15 @@ i {
     color: #5B642C;
 }
 
+footer {
+    background-color: #241F1C;
+    color: #F7F7F7;
+}
+
 
 /* styling for navbar */
 .navbar {
-    background-color: #727576;
+    background-color: #241F1C;
 }
 
 .nav-link, .navbar-brand{
