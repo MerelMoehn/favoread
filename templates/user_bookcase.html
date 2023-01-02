@@ -8,44 +8,55 @@
         </div>
         <div class="row mt-5">
             {% for book in books %}
-            <div class="card mb-3" style="max-width: 540px;">
+            <div class="card m-2 p-0" style="max-width: 400px;">
                 <div class="row g-0">
-                    <div class="col-md-4 align-self-center">
+                    <div class="col-md-6 align-self-center">
                         <img src="https://res.cloudinary.com/duz5vkvkt/image/upload/v1671882531/bookcasesmall_ltw4ts.jpg"
                             class="img-fluid rounded-start" alt="Image of Bookcase">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <div class="card-body">
+                            <div class="row m-1">
+                                <h4 class="book-title-bookcase"> {{ book.book }} </h4>
+                            </div>
                             <div class="row">
-                                <div class="col-md-6 offset-md-6">
+                                <div class="col-md-5 p-1 text-end">
+                                    <form action="{% url 'delete_book' book.book.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button class="btn btn-delete" type="submit" name="book"
+                                            value="{{book.book.id}}">Delete</button>
+                                    </form>
+                                </div>
+                                <div class="col-md-7 p-1 text-start">
                                     <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                        <button class="btn btn-drop dropdown-toggle text-center" type="button"
                                             id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
                                             {{ book.get_status_display }}
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                            <form action="{% url 'update_status' book.book.id %}?status=2" method="POST">
+                                            <form action="{% url 'update_status' book.book.id %}?status=2"
+                                                method="POST">
                                                 {% csrf_token %}
-                                            <button class="dropdown-item" type="submit" name="status" value=2>Read</button>
+                                                <button class="dropdown-item" type="submit" name="status"
+                                                    value=2>Read</button>
                                             </form>
-                                            <form action="{% url 'update_status' book.book.id %}?status=1" method="POST">
+                                            <form action="{% url 'update_status' book.book.id %}?status=1"
+                                                method="POST">
                                                 {% csrf_token %}
-                                            <button class="dropdown-item" type="submit" name="status" value=1>Reading</button>
+                                                <button class="dropdown-item" type="submit" name="status"
+                                                    value=1>Reading</button>
                                             </form>
-                                            <form action="{% url 'update_status' book.book.id %}?status=0" method="POST">
+                                            <form action="{% url 'update_status' book.book.id %}?status=0"
+                                                method="POST">
                                                 {% csrf_token %}
-                                            <button class="dropdown-item" type="submit" name="status" value=0>Still to read</button>
+                                                <button class="dropdown-item" type="submit" name="status" value=0>Still
+                                                    to read</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <h5 class="book-title"> {{ book.book }} </h5>
-                            <form action="{% url 'delete_book' book.book.id %}" method="POST">
-                                {% csrf_token %}
-                                <button class="btn btn-delete" type="submit" name="book" value="{{book.book.id}}">Delete</button>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -54,6 +65,7 @@
             <p>Sorry. There are no books in this bookcase.</p>
             {% endfor %}
         </div>
-
     </div>
-    {%endblock%}
+</div>
+
+{%endblock%}

@@ -38,6 +38,7 @@ i {
 .btn-delete{
     background-color: #6B290D;
     color: #F7F7F7;
+    font-size: 13px;
 }
 
 
@@ -67,6 +68,22 @@ i {
 
 .badge{
     background-color:#6B290D;
+}
+
+
+/* styling for user bookcase */
+.btn-drop{
+    background-color: #F7F7F7;
+    border-color: #727576;
+    font-size: 13px;
+}
+
+.dropdown-item {
+    font-size: 13px;
+}
+
+.book-title-bookcase{
+    font-size: 14px;
 }
 
 

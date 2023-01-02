@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.template.defaultfilters import slugify
 
-READ_STATUS = ((0, "Still to Read"), (1, "Reading"), (2, "Read"))
+READ_STATUS = ((0, "Not started"), (1, "Reading"), (2, "Read"))
 
 
 class Book(models.Model):
