@@ -64,7 +64,6 @@ class Bookcases(generic.ListView):
     context_object_name = 'bookcases'
     queryset = Bookcase_book.objects.order_by('bookcase_owner').distinct('bookcase_owner')
     template_name = 'bookcases.html'
-    paginate_by = 6
 
 
 class AddBook(View):

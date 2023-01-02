@@ -1,29 +1,76 @@
 body {
     background-color: #F7F7F7;
     font-family: Arial, Helvetica, sans-serif;
-    color: #000000
+    color: #241F1C;
 }
 
+a {
+    text-decoration: none;
+}
+
+.text-muted{
+    font-size: 25px;
+    color:#5B642C;
+}
+
+i {
+    color: #5B642C;
+}
+
+
+/* styling for navbar */
+.navbar {
+    background-color: #727576;
+}
+
+.nav-link, .navbar-brand{
+    color: #F7F7F7;
+}
+
+
+/* styling for buttons */
+
 .btn-color{
-    background-color: #406A6F;
+    background-color: #5B642C;
     color: #F7F7F7;
 }
 
 .btn-delete{
-    background-color: #904433;
+    background-color: #6B290D;
     color: #F7F7F7;
 }
 
+
+/* styling for book cards */
 .book-title{
-    color:  #406A6F;
-    font-size: 18px;
+    color:  #5B642C;
 }
 
+.author{
+    color:#241F1C;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
 .card-text{
-    color:  #406A6F;
+    color:  #6B290D;
     font-style: italic;
 }
 
+/* Styling for overview bookcase owners */
+.list-group-item{
+    color:#241F1C;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.badge{
+    background-color:#6B290D;
+}
+
+
+/* Styling for messages */
 .success{
     background-color: #D4EDDA;
     border-color: #1A3E23;
