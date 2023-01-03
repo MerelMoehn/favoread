@@ -43,9 +43,13 @@ class TestViews(TestCase):
         added_book = Book.objects.filter(title='Testbook2')
         self.assertEqual(len(added_book), 1)
 
-
-    # def test_can_delete_book(self):
-    
+    def test_can_delete_bookcase_book(self):
+        book = Book.objects.create(title='Testbook3', author='Tester', excerpt='testing')
+        bookcase_book = Bookcase_book.objects.create(bookcase_owner=self.testuser[0], book=self.tbook)
+        response = self.client.get(f'/delete/{book.id}')
+        delete_bc_book = Bookcase_book.objects.filter(book=book.id)
+        self.assertEqual(len(delete_bc_book), 0)
+        
     # def test_can_change_category(self):
 
 # NOT TESTABLE - this results in error because DISTINCT IS NOT SUPPORTED
