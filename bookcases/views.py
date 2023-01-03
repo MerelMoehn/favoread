@@ -32,17 +32,16 @@ class SubmitBook(View):
         # to add the book to the Book model
         if submit_form.is_valid():
             new_book = submit_form.save()
+            messages.success(request, 'Your book has been submitted for review!')
 
         # to add the book as an instance to the Bookcase_book model
             new_bookcase_book = Bookcase_book.objects.create(book=new_book, bookcase_owner=request.user)
 
         else:
             submit_form = SubmitForm()
+            messages.error(request, 'Oeps, something went wrong try again.')
 
-        return render(
-            request,
-            "submit_book.html",
-        )
+        return HttpResponseRedirect(reverse('submit_book'))
 
 
 class BookDetail(View):
