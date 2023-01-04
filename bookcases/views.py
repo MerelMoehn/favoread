@@ -109,7 +109,9 @@ class UpdateStatus(View):
     def post(self, request, book, *args, **kwargs):
         current_user = request.user
         book_to_update = get_object_or_404(Bookcase_book, book=book, bookcase_owner=current_user)
-        status_passed = request.GET.get("status")
+        
+        status_passed = request.POST.get("status")
+
         book_to_update.status = status_passed
         book_to_update.save()
         return HttpResponseRedirect(reverse('user_bookcase'))
