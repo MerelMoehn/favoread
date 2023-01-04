@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.shortcuts import reverse
 from django.contrib.auth.models import User
+from django.contrib.messages import get_messages
 from .models import Book, Bookcase_book
 
 
@@ -46,27 +47,40 @@ class TestViews(TestCase):
         book_in_bookcase = Bookcase_book.objects.filter(book=book.id, bookcase_owner=self.testuser[0].id)
         self.assertEqual(len(book_in_bookcase), 1)
 
+    def test_add_book_twice_throws_error(self):
+        response = self.client.post(f'/add/{self.tbook.slug}/')
+
+        messages = [m.message for m in get_messages(response.wsgi_request)]
+        self.assertIn('This book is already in your bookcase', messages)
+
     def test_can_submit_book(self):
         response = self.client.post('/submit_book/', {'title': 'Testbook2', 'author':'Esther Tester', 'excerpt': 'testing twice'})
+        
         self.assertRedirects(response, '/submit_book/')
+        
         added_book = Book.objects.filter(title='Testbook2')
         self.assertEqual(len(added_book), 1)
 
+    def test_submit_book_throws_error(self):
+        response = self.client.post('/submit_book/', {'title': '', 'author':'Esther Tester', 'excerpt': 'testing twice'})
+        
+        messages = [m.message for m in get_messages(response.wsgi_request)]
+        self.assertIn('Oeps, something went wrong, try again.', messages)
+
     def test_can_change_status(self):
         response = self.client.post(f'/update_status/{self.tbook.id}/', {'status': 2}, follow=True)
+        
         self.assertRedirects(response, reverse('user_bookcase'), target_status_code=200)
+        
         self.tbookcase_book.refresh_from_db()
         self.assertFalse(self.tbookcase_book.status == 0)
 
     def test_can_delete_bookcase_book(self):
-        # create a test book and add it to bookcase
         book = Book.objects.create(title='Testbook3', author='Tester', excerpt='testing')
         bc_book = Bookcase_book.objects.create(bookcase_owner=self.testuser[0], book=book)
 
-        # delete the testbook
         response = self.client.post(f'/delete/{book.id}/')
 
-        # test if book is deleted
         delete_bc_book = Bookcase_book.objects.filter(book=book.id)
         self.assertEqual(len(delete_bc_book), 0)
 

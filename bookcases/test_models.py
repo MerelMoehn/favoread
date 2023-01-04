@@ -18,5 +18,5 @@ class TestModels(TestCase):
     def test_book_string_method_returns_name(self):
         self.assertEqual(str(self.tbook), "Testbook by Tester")
 
-    def test_book_string_method_returns_name(self):
+    def test_tbcbook_string_method_returns_name(self):
         self.assertEqual(str(self.tbc_book), "Testbook by Tester in testuser's bookcase")
