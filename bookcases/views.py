@@ -110,7 +110,7 @@ class UpdateStatus(View):
         current_user = request.user
         book_to_update = get_object_or_404(Bookcase_book, book=book, bookcase_owner=current_user)
         
-        status_passed = request.POST.get("status")
+        status_passed = request.POST.get('status')
 
         book_to_update.status = status_passed
         book_to_update.save()
