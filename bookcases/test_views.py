@@ -44,25 +44,20 @@ class TestViews(TestCase):
         response = self.client.post(f'/add/{book.slug}/')
 
         book_in_bookcase = Bookcase_book.objects.filter(book=book.id, bookcase_owner=self.testuser[0].id)
-        print(book_in_bookcase)
         self.assertEqual(len(book_in_bookcase), 1)
 
-    def test_can_add_book(self):
+    def test_can_submit_book(self):
         response = self.client.post('/submit_book/', {'title': 'Testbook2', 'author':'Esther Tester', 'excerpt': 'testing twice'})
         self.assertRedirects(response, '/submit_book/')
         added_book = Book.objects.filter(title='Testbook2')
         self.assertEqual(len(added_book), 1)
 
-    # def test_can_change_status(self):
-    #     book = Book.objects.create(title='Testbook5', author='Testa', excerpt='testing')
-    #     bc_book = Bookcase_book.objects.create(bookcase_owner=self.testuser[0], book=book)
-
-    #     response = self.client.post(f'/update_status/{book.id}/', {'status': 1 }, follow=True)
-
-    #     self.assertRedirects(response, reverse('user_bookcase'), target_status_code=200)
-
-    #     print(bc_book.status)
-    #     self.assertFalse(bc_book.status == 0)
+    def test_can_change_status(self):
+        response = self.client.post(f'/update_status/{self.tbook.id}/', {'status': 2}, follow=True)
+        self.assertRedirects(response, reverse('user_bookcase'), target_status_code=200)
+        self.tbookcase_book.refresh_from_db()
+        self.assertFalse(self.tbookcase_book.status == 0)
+        print(self.tbookcase_book.status)
 
     def test_can_delete_bookcase_book(self):
         # create a test book and add it to bookcase
