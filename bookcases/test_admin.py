@@ -14,5 +14,10 @@ class TestAdmin(TestCase):
         self.book = Book.objects.create(title='Testbook', author='Tester', excerpt='testing')
 
     def test_approve_true_by_admin(self):
-        response = self.client.post('admin:bookcases_book_changelist', {'_selected_action': 'approve_books'})
+        data = {'action': 'approve_books', '_selected_action': self.book.id}
+        change_url = reverse('admin:bookcases_book_changelist')
+        # POST data to change_url
+        response = self.client.post(change_url, data, follow=True)
+        
+        self.book.refresh_from_db()
         self.assertTrue(self.book.approved)
