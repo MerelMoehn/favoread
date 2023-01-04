@@ -57,7 +57,6 @@ class TestViews(TestCase):
         self.assertRedirects(response, reverse('user_bookcase'), target_status_code=200)
         self.tbookcase_book.refresh_from_db()
         self.assertFalse(self.tbookcase_book.status == 0)
-        print(self.tbookcase_book.status)
 
     def test_can_delete_bookcase_book(self):
         # create a test book and add it to bookcase
