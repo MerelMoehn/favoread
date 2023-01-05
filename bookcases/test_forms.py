@@ -23,9 +23,11 @@ class TestItemForm(TestCase):
         self.assertEqual(form.errors['excerpt'][0], 'This field is required.')
 
     def test_image_is_not_required(self):
-        form = SubmitForm({'title': 'Say hello', 'author': 'Merel', 'excerpt': 'best book ever'})
+        form = SubmitForm({'title': 'Say hello', 'author': 'Merel', 'excerpt':
+                          'best book ever'})
         self.assertTrue(form.is_valid())
 
     def test_fields_are_explicit_in_form_metaclass(self):
         form = SubmitForm()
-        self.assertEqual(form.Meta.fields, ('title', 'author', 'excerpt', 'featured_image'))
+        self.assertEqual(form.Meta.fields, ('title', 'author', 'excerpt',
+                         'featured_image'))

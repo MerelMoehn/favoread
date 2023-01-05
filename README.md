@@ -62,7 +62,27 @@ The following features would be nice to add in the future:
 * Letting the player decide the number of ships
 * Being able to add ships that are larger than one dot on the grid
 
+## Design & wireframing
+**Design & Colourscheme**
+The design of the FavoReads application is based on the image below. Four colours are extracted and used for the main elements on the page. An additional colour was picked for the typografie. 
+* Color for NavBar and Icons: #41585A
+* Color for buttons and excerpt: #9A602A
+* Color for background and white text: #F2EEED
+* Color for footer and author: #A19F9E
+* Color for text: #241F1C
+<img src="media/readme_images/DesignColours_favoreads.png">
+
+**WireFrames**
+[Click here for related user story.](https://github.com/MerelMoehn/favoreads/issues/20)
+The wireframes created for this project were made in the online tool Miro. 
+
+The wireframes were used as a rough sketch of what the application was meant to do and look like. This included the page navigation, the different pages needed, and a rough sketch of the design.
+After initial set up of the main features the design was further implemented based on the design as described above.
+<img src="media/readme_images/FavoReads Wireframing (1).jpg">
+
 ## Data model
+[Click here for related user story.](https://github.com/MerelMoehn/favoreads/issues/14)
+The data model was created in LucidChart. 
 
 
 ## External Libraries
@@ -74,9 +94,24 @@ For this project I made us of several external libraries:
 
 ## Testing
 **Validators**
-PEP8 was installed via the following steps:
+All custom code passed the the CI Python Linter validation, without any errors.
+The following files were passed through the linter:
+* admin.py
+* apps.py
+* forms.py
+* models.py
+* test_admin.py
+* test_forms.py
+* test_models.py
+* test_views.py
+* urls.py
+* views.py
 
-
+Each site page has been checked with Lighthouse and the following improvements have been made:
+* Using smaller images to load page faster
+* include meta tag on page
+* Language has been set in base.html
+* Non unique ARIA IDs are made unique
 
 **Manual Testing**
 

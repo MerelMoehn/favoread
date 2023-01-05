@@ -32,10 +32,14 @@ class SubmitBook(View):
         # to add the book to the Book model
         if submit_form.is_valid():
             new_book = submit_form.save()
-            messages.success(request, 'Your book has been submitted for review!')
+            messages.success(request,
+                             'Your book has been submitted for review!')
 
         # to add the book as an instance to the Bookcase_book model
-            new_bookcase_book = Bookcase_book.objects.create(book=new_book, bookcase_owner=request.user)
+            new_bookcase_book = Bookcase_book.objects.create(
+                book=new_book,
+                bookcase_owner=request.user
+                )
 
         else:
             submit_form = SubmitForm()
@@ -61,7 +65,8 @@ class BookDetail(View):
 class Bookcases(generic.ListView):
     model = Bookcase_book
     context_object_name = 'bookcases'
-    queryset = Bookcase_book.objects.order_by('bookcase_owner').distinct('bookcase_owner')
+    queryset = Bookcase_book.objects.order_by(
+        'bookcase_owner').distinct('bookcase_owner')
     template_name = 'bookcases.html'
 
 
@@ -70,9 +75,12 @@ class AddBook(View):
     def post(self, request, slug, *args, **kwargs):
         current_user = request.user
         book_to_add = get_object_or_404(Book, slug=slug)
-        
-        if not Bookcase_book.objects.filter(bookcase_owner=current_user, book=book_to_add).exists():
-            new_bookcase_book = Bookcase_book.objects.create(book=book_to_add, bookcase_owner=current_user)
+
+        if not Bookcase_book.objects.filter(bookcase_owner=current_user,
+                                            book=book_to_add).exists():
+            new_bookcase_book = Bookcase_book.objects.create(
+                book=book_to_add,
+                bookcase_owner=current_user)
             messages.success(request, 'The book is added to your bookcase')
             return HttpResponseRedirect(reverse('book_detail', args=[slug]))
         else:
@@ -83,7 +91,8 @@ class AddBook(View):
 class UserBookcase(View):
     def get(self, request, *args, **kwargs):
         current_owner = request.user
-        bookcase_books = Bookcase_book.objects.filter(bookcase_owner=current_owner, book__approved=True)
+        bookcase_books = Bookcase_book.objects.filter(
+            bookcase_owner=current_owner, book__approved=True)
 
         return render(
             request,
@@ -99,7 +108,8 @@ class DeleteBook(View):
 
     def post(self, request, book, *args, **kwargs):
         current_user = request.user
-        book_to_delete = get_object_or_404(Bookcase_book, book=book, bookcase_owner=current_user)
+        book_to_delete = get_object_or_404(
+            Bookcase_book, book=book, bookcase_owner=current_user)
         book_to_delete.delete()
         return HttpResponseRedirect(reverse('user_bookcase'))
 
@@ -108,8 +118,9 @@ class UpdateStatus(View):
 
     def post(self, request, book, *args, **kwargs):
         current_user = request.user
-        book_to_update = get_object_or_404(Bookcase_book, book=book, bookcase_owner=current_user)
-        
+        book_to_update = get_object_or_404(
+            Bookcase_book, book=book, bookcase_owner=current_user)
+
         status_passed = request.POST.get('status')
 
         book_to_update.status = status_passed
@@ -119,7 +130,8 @@ class UpdateStatus(View):
 
 class VisitBookcase(View):
     def get(self, request, owner, *args, **kwargs):
-        bookcase_books = Bookcase_book.objects.filter(bookcase_owner=owner, book__approved=True)
+        bookcase_books = Bookcase_book.objects.filter(
+            bookcase_owner=owner, book__approved=True)
         selected_owner = get_object_or_404(User, id=owner)
 
         return render(

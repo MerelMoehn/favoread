@@ -6,7 +6,7 @@
         <div class="col mt-5">
             <h1>Welcome to your bookcase! <small class="text-muted">{{ user.username }}</small></h1>
         </div>
-        <div class="row mt-5">
+        <div class="row m-3">
             {% for book in books %}
             <div class="card m-2 p-0" style="max-width: 400px;">
                 <div class="row g-0">
@@ -20,21 +20,21 @@
                                 <h4 class="book-title-bookcase"> {{ book.book }} </h4>
                             </div>
                             <div class="row">
-                                <div class="col-md-5 p-1 text-end">
+                                <div class="col-sm-5 p-1 text-end">
                                     <form action="{% url 'delete_book' book.book.id %}" method="POST">
                                         {% csrf_token %}
                                         <button class="btn btn-delete" type="submit" name="book"
                                             value="{{book.book.id}}">Delete</button>
                                     </form>
                                 </div>
-                                <div class="col-md-7 p-1 text-start">
+                                <div class="col-sm-7 p-1 text-start">
                                     <div class="dropdown">
                                         <button class="btn btn-drop dropdown-toggle text-center" type="button"
                                             id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
                                             {{ book.get_status_display }}
                                         </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuBookStatus">
                                             <form action="{% url 'update_status' book.book.id %}?status=2"
                                                 method="POST">
                                                 {% csrf_token %}

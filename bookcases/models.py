@@ -30,8 +30,10 @@ class Book(models.Model):
 
 
 class Bookcase_book(models.Model):
-    bookcase_owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookcase_owner")
-    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="books")
+    bookcase_owner = models.ForeignKey(User, on_delete=models.CASCADE,
+                                       related_name="bookcase_owner")
+    book = models.ForeignKey(Book, on_delete=models.CASCADE,
+                             related_name="books")
     status = models.IntegerField(choices=READ_STATUS, default=0)
     updated_on = models.DateTimeField(auto_now=True)
     added_on = models.DateTimeField(auto_now_add=True)

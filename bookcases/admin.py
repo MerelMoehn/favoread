@@ -17,7 +17,7 @@ class BookAdmin(SummernoteModelAdmin):
 
 @admin.register(Bookcase_book)
 class Bookcase_bookAdmin(SummernoteModelAdmin):
-    
+
     list_display = ('bookcase_owner', 'book')
     search_fields = ['bookcase_owner', 'book']
     list_filter = ('bookcase_owner', 'book')
