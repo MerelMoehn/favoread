@@ -15,10 +15,20 @@ The app can be accessed via the following link:
 
 ## User Stories
 **User stories**
-The user stories that are at the base of this website are as follows:
+| User Story ID | As a/an | I want to be able to... | So that I can... |
+| --- | ----------- | ----------- | ----------- |
+ | Book inspiration | 
+| 1 | Registered User | View a list of bookcase (owners) | get inspiration for my next book | 
+ | 2 | Registered User | View individual books | So I can specifically add that book to my bookcase| 
+ | 3 | Registered User | See an embedded google maps map | Plan my journey to the site from my location | 
+ | 4 | Registered User | Display my own bookcase | So I can inspire others with the books I read| 
+ | Registration and User Accounts | 
+ | 8 | Unregistered User | Easily register for an account | Join this book community | 
+ | 9 | Registered User | Easily login or logout | View bookcases, upload books, and manage my bookcase | 
+ | 10 | Registered User | Easily recover my password | Access my account even if I've forgotten my password | 
+ | Landing Page | 
+ | 28 | Site Owner | Showcase books | Give website visitors a quick sense of the types of books and functionalities available on my website | 
 
-* As a user I want to 
-* As a user I want to 
 
 ## General Instructions and features
 
