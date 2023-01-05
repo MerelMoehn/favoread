@@ -13,8 +13,32 @@ The last update to this file was: **January 14, 2023**
 ## Deployed project
 The app can be accessed via the following link:
 
-## User Stories
-**User stories**
+## General introduction and instructions
+
+## Project Approach
+This application is built using an agile approach. Therefore, the functionalities were broken down into Epics & User stories, and these picked up in three sprints. Each sprint consisted of one week. 
+
+### Epics & labels
+The application features were broken down into Epics and hence in User Stories. 
+For each User Story, a issue was created. The corresponding Epic was depicted via a label.
+There were two additional labels: Front-End, Back-End. For each User Story it was often the case that there were some BE and FE functionalities. Therefore, most User Stories were split into two User Stories, one for BE, one for FE.
+
+[All Epics/labels can be viewed here.](https://github.com/MerelMoehn/favoreads/labels)
+The following Epics were defined:
+- Account Management: Sign Up, Log-In, Log-Out
+- Display Users & Books: the functionality of displaying a list of books or user/bookcase owners. This Epic was focused on the inspiration goal of this application.
+- Add Books: this included the submitting of a new book to the application, as well as adding an existing book to one's own bookcase. Together with the next Epic, this Epic was focused on the Inspire goal of the application.
+- Bookcase management: this included the management of one's own bookcase, in which a user can edit a book's status, or delete a book from the bookcase. Together with the previous Epic, this Epic was focused on the Inspire goal of the application.
+- Project Prerequisites: this Epic was all about the project set-up and anything needed for project deployment.
+
+Additional labels used:
+- Bug: to label the bugs found and solved during the project
+- Documentation: to label all stories related to creating the correct and sufficient documentation.
+- Front-end: to label user stories focused on the Front-end
+- Back-end: to label user stories focused on the Back-end
+
+### User stories
+
 | User Story ID | As a/an | I want to be able to... | So that I can... |
 | --- | ----------- | ----------- | ----------- |
  | Book inspiration | 
@@ -29,41 +53,32 @@ The app can be accessed via the following link:
  | Landing Page | 
  | 28 | Site Owner | Showcase books | Give website visitors a quick sense of the types of books and functionalities available on my website | 
 
+### Project Planning
+The project was planned and built in three sprints each consisting of one week. The project tool used was GitHub Projects & Issues. The issues were mapped on a kanban board using Epic, and FE&BE labels.
 
-## General Instructions and features
+I decided to focus on creating the main back-end functionalities first before focusing on front-end. This decision was made based on the availability of support during the Christmas holidays. 
+
+[View stories included in sprint 1.](https://github.com/MerelMoehn/favoreads/milestone/1?closed=1)
+[View stories included in sprint 2.](https://github.com/MerelMoehn/favoreads/milestone/2?closed=1)
+[View stories included in sprint 3.](https://github.com/MerelMoehn/favoreads/milestone/3)
 
 
-**Features**
+## Features
 
 ![Image of username input](./assets/images/username_input.png)
 * Username input: the player is asked to insert his/her name.
 
-![Image of instructions input](./assets/images/instructions_input.png)
-* Instructions input: the player can choose to read the instructions, or not.
-
-![Image of user input](./assets/images/userinput.png)
-* Guess input: the user can insert his guess for a row and column.
-
-![Image of input validation](./assets/images/userfeedback.png)
-* Input validation: the player gets feedback when the input is not valid. The validation checks for range(0-4), type(number), and if the guess has already been made before.
-
-![Image of score board](./assets/images/scoreboard.png)
-* Score board: to give the player a quick overview of the scores instead of counting the H's, a score board is displayed with the hit rate of both player and computer.
-
-![Image of boards](./assets/images/displayboard_hitsandmisses.png)
-* Boards: both the player's board and the computer's board are displayed. An 'H" represents a HIT, an X represents a MISS. The location of the player's ships are represented by an @. The computer's ships are hidden.
-
-* Result: after 4 ships are sunk by either the player or the computer, the game will display a result message.
-
-**Future Features**
+### Future Features
 The following features would be nice to add in the future:
 
-* Letting the player decide the size of the grid
-* Letting the player decide the number of ships
-* Being able to add ships that are larger than one dot on the grid
+- BookClub/Commenting functionality: it would be nice if FavoReads could also act as a BookClub community. One feature could therefore be to allow commenting on a specific book to be able to discuss the book online. 
+
+- Bookcase ratings functionality: it could be a nice idea to allow users to like other users' bookcases. While 'likes' are also scrutinized on social media because they are not good for mental health it could increase the application engagement.
+
+- Search functionality: being able to search the website for a book or bookcase owner via a search bar would probably increase the user experience. 
 
 ## Design & wireframing
-**Design & Colourscheme**
+### Colourscheme
 The design of the FavoReads application is based on the image below. Four colours are extracted and used for the main elements on the page. An additional colour was picked for the typografie. 
 * Color for NavBar and Icons: #41585A
 * Color for buttons and excerpt: #9A602A
@@ -72,7 +87,29 @@ The design of the FavoReads application is based on the image below. Four colour
 * Color for text: #241F1C
 <img src="media/readme_images/DesignColours_favoreads.png">
 
-**WireFrames**
+### Typography
+
+- The typography used within the application is the following font-family: Arial, Helvetica, sans-serif. These fonts were used because they are a fairly safe choice and do not distract the attention from the books. 
+
+### Cards
+
+- I have used Bootstrap cards to visually organise content and to make the bookcase pages look like an actual bookcase.
+
+### Icons
+
+- I used icons from Font Awesome website. They are used on the index page to depict the three main features of the website.
+
+### Imagery 
+
+- Imagery is used to give the application a more sophisticated look and to make it feel like an actual online bookcase.
+
+- Images are mostly displayed within Bootstrap cards to mock the idea of a bookcase depicting multiple books next to each other.
+
+- The user is able to provide an image of the book when submitting a book. When no book is uploaded the default book image is used.
+
+
+### WireFrames
+
 [Click here for related user story.](https://github.com/MerelMoehn/favoreads/issues/20)
 The wireframes created for this project were made in the online tool Miro. 
 
@@ -83,7 +120,28 @@ After initial set up of the main features the design was further implemented bas
 ## Data model
 [Click here for related user story.](https://github.com/MerelMoehn/favoreads/issues/14)
 The data model was created in LucidChart. 
+The first data model included three models: Book, Bookcase, Bookcase_Book.
+After implementing the first features and templates I realized that there was no need for three different models and that two models would suffice: Book and Bookcase_book. As the Bookcase_Book combines both the owner of the bookcase and the specific books, it acts as they bookcase for different users.
 
+### The Book model
+The Book model includes the following fields:
+* Title: The title of the book, which needs to be unique. 
+* Slug: A unique auto generated slug that will be used to create the  URL to navigate to a specific bookpage.
+* Author: The author of the book. Does not have to be unique.
+* Excerpt: A short one or two sentence description of the book.
+* Featured_image: A picture of the book. A default is provided when the user does not upload an image. 
+* Created_on: The Data and Time the book was created on.
+* Approved: A True or False field, whether or not the admin has approved the book.
+The Book model also has a method that auto generates a slug based on the title of the book. 
+
+### The Bookcase_book Model
+The Bookcase_book model includes the following fields:
+* Bookcase_owner: A ForeignKey of the model User. Registers which User has added this book to his/her bookcase.
+* Book: A ForeignKey of the model Book. Registers which Book it is about.
+* Status: A choice field of which the choices are: Reading, Not Started, Read. To indicate whether or not the bookcase owner has read the book in his bookcase.
+* Created_on: A DateTime field indicating when the Bookcase_book was created. This data is used to order the bookcase_books on descending DateTime.
+
+<img src="media/readme_images/FavoReads_DataModel_Updated.png">
 
 ## External Libraries
 For this project I made us of several external libraries:
@@ -93,7 +151,7 @@ For this project I made us of several external libraries:
 * Crispy Forms
 
 ## Testing
-**Validators**
+### Validators
 All custom code passed the the CI Python Linter validation, without any errors.
 The following files were passed through the linter:
 * admin.py
@@ -113,22 +171,22 @@ Each site page has been checked with Lighthouse and the following improvements h
 * Language has been set in base.html
 * Non unique ARIA IDs are made unique
 
-**Manual Testing**
+### Manual Testing
 
-**Automated testing**
+### Automated testing
 In total there are 21 one automated test which cover 100% of the application.
 <img src="media/readme_images/CoverageReport_Favoreads.png">
 All tests pass. 
 <img src="media/readme_images/Automated_test_results_FavoReads.png">
 
-**Bugs found and solved**
+### Bugs found and solved
 Refer to Github board
 
-**Unsolved bugs**
+### Unsolved bugs
 
 
 ## Deployment
-**Heroku**
+### Heroku
 The project was deployed to Heroku using the following steps:
 1. I pushed my final code via the terminal after finishing the project.
 2. I created a new Heroku app
@@ -137,9 +195,9 @@ The project was deployed to Heroku using the following steps:
 5. I pushed my final code via the terminal after finishing the project.
 6. Then I selected 'deploy'
 
-**ElephantSQL**
+### ElephantSQL
 
-**Creating a local clone**
+### Creating a local clone
 You can create a local clone of the repository via the following steps:
 1. navigate to the main page of the repository
 2. download the code
@@ -153,10 +211,10 @@ For more detailed instructions, navigate to the following page:
 https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 
 ## Credits
-**Code**
+### Code
 
 
-**Acknowledgements**
+### Acknowledgements
 
 
 Thank you!

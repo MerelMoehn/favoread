@@ -14,7 +14,6 @@ class Book(models.Model):
     featured_image = CloudinaryField('image', default='book_preview')
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
-    likes = models.ManyToManyField(User, related_name="book_like", blank=True)
 
     class Meta:
         ordering = ["-created_on"]
@@ -35,11 +34,10 @@ class Bookcase_book(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE,
                              related_name="books")
     status = models.IntegerField(choices=READ_STATUS, default=0)
-    updated_on = models.DateTimeField(auto_now=True)
     added_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ["-updated_on"]
+        ordering = ["-added_on"]
 
     def __str__(self):
         return f"{self.book} in {self.bookcase_owner}'s bookcase"
