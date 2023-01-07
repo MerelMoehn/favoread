@@ -76,6 +76,9 @@ footer {
     background-color:#9A602A;
 }
 
+.bg-image{
+    border: none;
+}
 
 /* styling for user bookcase */
 .btn-drop{
