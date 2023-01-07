@@ -95,13 +95,15 @@ footer {
 
 /* Styling for messages */
 .success{
-    background-color: #F2EEED;
-    border-color: #41585A;
+    background-color: #A19F9E;
+    border-color: #F2EEED;
+    color:#F2EEED;
 }
 
 .error{
-    background-color: #F2EEED;
-    border-color: #380205;
+    background-color: #380205;
+    border-color: #F2EEED;
+    color:#F2EEED;
 }
 
 
