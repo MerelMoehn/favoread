@@ -12,12 +12,12 @@ class BookList(generic.ListView):
     model = Book
     queryset = Book.objects.filter(approved=True).order_by('-created_on')[:3]
     template_name = 'index.html'
-    paginate_by = 6
 
 
 class SubmitBook(View):
 
     def get(self, request, *args, **kwargs):
+        # Render SubmitForm to user to submit a book
         return render(
             request,
             'submit_book.html',
@@ -50,6 +50,7 @@ class SubmitBook(View):
 
 class BookDetail(View):
     def get(self, request, slug, *args, **kwargs):
+        # Gets a specific book and shows the details
         queryset = Book.objects.filter(approved=True)
         book = get_object_or_404(queryset, slug=slug)
 
@@ -73,9 +74,13 @@ class Bookcases(generic.ListView):
 class AddBook(View):
 
     def post(self, request, slug, *args, **kwargs):
+        # Adds an existing book to a bookcase of the logged-in user
+        # (instance of Bookcase_book)
         current_user = request.user
         book_to_add = get_object_or_404(Book, slug=slug)
 
+        # Checks if the book already exists as
+        # instance in Bookcase_book for this user
         if not Bookcase_book.objects.filter(bookcase_owner=current_user,
                                             book=book_to_add).exists():
             new_bookcase_book = Bookcase_book.objects.create(
@@ -90,6 +95,8 @@ class AddBook(View):
 
 class UserBookcase(View):
     def get(self, request, *args, **kwargs):
+        # Gets all the instances of Bookcase_book for logged-in user
+        # to display the bookcase
         current_owner = request.user
         bookcase_books = Bookcase_book.objects.filter(
             bookcase_owner=current_owner, book__approved=True)
@@ -107,15 +114,18 @@ class UserBookcase(View):
 class DeleteBook(View):
 
     def post(self, request, book, *args, **kwargs):
+        # Deletes a Bookcase_book instance for logged-in user
         current_user = request.user
         book_to_delete = get_object_or_404(
             Bookcase_book, book=book, bookcase_owner=current_user)
         book_to_delete.delete()
+        messages.success(request, 'The book is deleted from your bookcase')
         return HttpResponseRedirect(reverse('user_bookcase'))
 
 
 class UpdateStatus(View):
 
+    # Allows user to update the reading status of a Bookcase_book
     def post(self, request, book, *args, **kwargs):
         current_user = request.user
         book_to_update = get_object_or_404(
@@ -125,10 +135,12 @@ class UpdateStatus(View):
 
         book_to_update.status = status_passed
         book_to_update.save()
+        messages.success(request, 'Reading status has been updated.')
         return HttpResponseRedirect(reverse('user_bookcase'))
 
 
 class VisitBookcase(View):
+    # To display bookcases of other users
     def get(self, request, owner, *args, **kwargs):
         bookcase_books = Bookcase_book.objects.filter(
             bookcase_owner=owner, book__approved=True)

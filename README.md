@@ -39,19 +39,46 @@ Additional labels used:
 
 ### User stories
 
+In the table below is an overview of the distinct User Stories. What I mean by that is the following, as mentioned some user stories are divided into two: FE & BE. The User Story is only named once in the table below.
+In addition, some User Stories have overlap between the EPICS, for example, messaging. These are also only named once, but may be implemented for other EPICS as well.
+
+The total number of user stories used were: 39
+
 | User Story ID | As a/an | I want to be able to... | So that I can... |
 | --- | ----------- | ----------- | ----------- |
- | Book inspiration | 
-| 1 | Registered User | View a list of bookcase (owners) | get inspiration for my next book | 
- | 2 | Registered User | View individual books | So I can specifically add that book to my bookcase| 
- | 3 | Registered User | See an embedded google maps map | Plan my journey to the site from my location | 
- | 4 | Registered User | Display my own bookcase | So I can inspire others with the books I read| 
- | Registration and User Accounts | 
- | 8 | Unregistered User | Easily register for an account | Join this book community | 
- | 9 | Registered User | Easily login or logout | View bookcases, upload books, and manage my bookcase | 
- | 10 | Registered User | Easily recover my password | Access my account even if I've forgotten my password | 
- | Landing Page | 
- | 28 | Site Owner | Showcase books | Give website visitors a quick sense of the types of books and functionalities available on my website | 
+ | [Add Books](https://github.com/MerelMoehn/favoreads/issues?q=label%3A%22add+books%22+is%3Aclosed) | 
+ | 1 | Registered User | Submit a book when not already online | share this with others | 
+ | 2 | Registered User | Add an existing book to my bookcase | So I can create my online bookcase | 
+ | 3 | Admin | Approve/disapprove submitted books | Ensure no books are entered double or that questionable books are allowed.| 
+  | [Display Books & Users & Bookcases](https://github.com/MerelMoehn/favoreads/issues?q=label%3A%22Display+users+%26+books%22+is%3Aclosed) | 
+ | 4 | Registered User | View a list of bookcase (owners) | Navigate to their bookcase and be inspired | 
+ | 5 | Registered User | View the bookcase of another user | View the books in their bookcase and be inspired | 
+ | 6 | Registered User | View individual books | So I can specifically add that book to my bookcase | 
+ | 7 | Registered User | Display my own bookcase | So I can inspire others with the books I read |
+ | 8 | Registered User | Navigate between the different pages | So I see either books, bookcases or my own bookcase |
+ | 9 | Developer | Create auto generated slugs | Connect books & bookcase detail pages to the correct book/bookcase | 
+ | 10 | Site Owner | Showcase a few books & functionalities | Give website visitors a quick sense of the types of books and functionalities available on my website | 
+  | [Manage Bookcase](https://github.com/MerelMoehn/favoreads/issues?q=label%3A%22Manage+Bookcase%22+is%3Aclosed) | 
+ | 11 | Registered User | Update the reading status of my book | Show others an up to date bookcase | 
+ | 12 | Registered User | Delete a book out of my bookcase | Show others an up to date bookcase |
+ | 13 | Registered User | Automatically add a submitted book to my bookcase | So that I don't have to do this manually |
+ | 14 | Registered User | See a confirmation message of my action | So that I know what is happening |
+ | [Account Management](https://github.com/MerelMoehn/favoreads/issues?q=label%3A%22Account+management%22+is%3Aclosed) | 
+ | 15 | Unregistered User | Easily register for an account | Join this book community | 
+ | 16 | Registered User | Easily login or logout | View bookcases, upload books, and manage my bookcase | 
+ | 17 | Registered User | Easily recover my password | Access my account even if I've forgotten my password | 
+ | 18 | Unregistered User | Get an impression of the application from the homepage | Understand what the project is about | 
+  | [Project Prerequisites](https://github.com/MerelMoehn/favoreads/issues?q=label%3A%22project+prerequisites%22+is%3Aclosed) | 
+ | 19 | Developer | Set up my project | Build the base layout of my application |
+ | 20 | Developer | Create the Data Models | Support my application with data | 
+ | 21 | Developer | Deploy my application early | Check frequently if everything is working properly | 
+ | 22 | Developer | Create automated tests | Ensure a reliable application | 
+ | 23 | Developer | Create understandable code via commenting | Help other developers understand it |
+  | [Documentation](https://github.com/MerelMoehn/favoreads/issues?q=label%3Adocumentation+is%3Aclosed) |
+| 24 | Developer | Create Wireframes | Ensure my application is properly designed | 
+| 25 | Developer | Create a LucidChart Data Model | Ensure my Data Models are designed & documented correctly | 
+| 26 | Developer | Document in a ReadMe file | Ensure my application is documented correctly & sufficiently | 
+
 
 ### Project Planning
 The project was planned and built in three sprints each consisting of one week. The project tool used was GitHub Projects & Issues. The issues were mapped on a kanban board using Epic, and FE&BE labels.

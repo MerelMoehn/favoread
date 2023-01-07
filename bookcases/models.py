@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.template.defaultfilters import slugify
 
+# This status is used to reflect if the,
+# bookcase owner has read the book already
 READ_STATUS = ((0, "Not started"), (1, "Reading"), (2, "Read"))
 
 
@@ -16,6 +18,7 @@ class Book(models.Model):
     approved = models.BooleanField(default=False)
 
     class Meta:
+        # Display books in descending order
         ordering = ["-created_on"]
 
     def __str__(self):
@@ -37,6 +40,7 @@ class Bookcase_book(models.Model):
     added_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        # Display books in descending order
         ordering = ["-added_on"]
 
     def __str__(self):

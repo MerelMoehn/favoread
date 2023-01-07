@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 
 class TestModels(TestCase):
+    # Setup: Create User, Book, and Bookcase_book instance to use for testing
     def setUp(self):
         self.testuser = User.objects.get_or_create(username='testuser')
         self.tbook = Book.objects.create(title='Testbook', author='Tester',

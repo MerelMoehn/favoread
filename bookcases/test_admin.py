@@ -8,6 +8,7 @@ from .models import Book
 
 
 class TestAdmin(TestCase):
+    # setup: create & log-in admin, and create book instance
     def setUp(self):
         self.admin = User.objects.create_superuser(username='admin')
         self.client.force_login(self.admin)
@@ -17,7 +18,6 @@ class TestAdmin(TestCase):
     def test_approve_true_by_admin(self):
         data = {'action': 'approve_books', '_selected_action': self.book.id}
         change_url = reverse('admin:bookcases_book_changelist')
-        # POST data to change_url
         response = self.client.post(change_url, data, follow=True)
 
         self.book.refresh_from_db()

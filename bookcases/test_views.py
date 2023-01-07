@@ -6,6 +6,7 @@ from .models import Book, Bookcase_book
 
 
 class TestViews(TestCase):
+    # Setup: Create & Login User, and create Book and Bookcase_book instance
     def setUp(self):
         self.testuser = User.objects.get_or_create(username='testuser')
         self.client.force_login(self.testuser[0])
@@ -58,6 +59,7 @@ class TestViews(TestCase):
     def test_add_book_twice_throws_error(self):
         response = self.client.post(f'/add/{self.tbook.slug}/')
 
+        # Based on StackOverflow for code to check for messages
         messages = [m.message for m in get_messages(response.wsgi_request)]
         self.assertIn('This book is already in your bookcase', messages)
 
@@ -103,7 +105,8 @@ class TestViews(TestCase):
         self.assertEqual(len(delete_bc_book), 0)
 
 
-# NOT TESTABLE - this results in error because DISTINCT IS NOT SUPPORTED
+# NOT TESTABLE - this results in error because DISTINCT IS NOT
+#  SUPPORTED in local DB
 #     def test_get_bookcases_page(self):
 #         response = self.client.get('/bookcases/')
 #         self.assertEqual(response.status_code, 200)
