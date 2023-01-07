@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
+from django.core.paginator import Paginator
 from .models import Book, Bookcase_book
 from .forms import SubmitForm
 
@@ -102,12 +103,19 @@ class UserBookcase(View):
         bookcase_books = Bookcase_book.objects.filter(
             bookcase_owner=current_owner, book__approved=True)
 
+        # To add pagination, show 9 books per page
+        paginator = Paginator(bookcase_books, 6)
+
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
         return render(
             request,
             "user_bookcase.html",
             {
                 "books": bookcase_books,
                 "user": current_owner,
+                "page_obj": page_obj,
             },
         )
 

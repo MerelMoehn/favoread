@@ -55,7 +55,8 @@ The total number of user stories used were: 39
  | 5 | Registered User | View the bookcase of another user | View the books in their bookcase and be inspired | 
  | 6 | Registered User | View individual books | So I can specifically add that book to my bookcase | 
  | 7 | Registered User | Display my own bookcase | So I can inspire others with the books I read |
- | 8 | Registered User | Navigate between the different pages | So I see either books, bookcases or my own bookcase |
+ | 8 | Registered User | Navigate between the different site pages | So I see either books, bookcases or my own bookcase |
+ | 9 | Registered User | View books paginated when more than 9 | Take the content to me in structured fashion |
  | 9 | Developer | Create auto generated slugs | Connect books & bookcase detail pages to the correct book/bookcase | 
  | 10 | Site Owner | Showcase a few books & functionalities | Give website visitors a quick sense of the types of books and functionalities available on my website | 
   | [Manage Bookcase](https://github.com/MerelMoehn/favoreads/issues?q=label%3A%22Manage+Bookcase%22+is%3Aclosed) | 

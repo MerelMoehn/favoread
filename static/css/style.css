@@ -13,7 +13,7 @@ a {
     color:#A19F9E;
 }
 
-i {
+.icon {
     color: #41585A;
 }
 
@@ -74,10 +74,6 @@ footer {
 
 .badge{
     background-color:#9A602A;
-}
-
-.bg-image{
-    border: none;
 }
 
 /* styling for user bookcase */

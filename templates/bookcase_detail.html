@@ -5,7 +5,8 @@
     <div class="row text-center">
         <div class="col mt-5">
             <h1>This is the bookcase of: {{ bc_owner.username }}</h1>
-            <p>You can click on each book to see the detail page. On this detail page you can add the book to your own bookcase.</p>
+            <p>You can click on each book to see the detail page. On this detail page you can add the book to your own
+                bookcase.</p>
         </div>
 
         <div class="row mt-5 justify-content-center">
@@ -34,6 +35,18 @@
             <p>Sorry. There are no books in this bookcase.</p>
             {% endfor %}
         </div>
+        {% if is_paginated %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
 
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
     </div>
     {%endblock%}

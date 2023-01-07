@@ -4,7 +4,7 @@
 
 <div class="container-fluid p-0">
     <!-- Hero -->
-    <div class="text-center bg-image" style="
+    <div class="text-center bg-image p-0" style="
 background-image: url('https://res.cloudinary.com/duz5vkvkt/image/upload/v1671881765/bookcase2_ecevj7.png');
 height: 300px;
 ">
@@ -20,11 +20,11 @@ height: 300px;
             {% for book in bookcases %}
             {% if book.bookcase_owner.id == user.id %}
             <a href="{% url 'user_bookcase'  %}"
-                class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center m-3">{{ book.bookcase_owner}}
-                <span class="badge rounded-pill">Visit bookcase</span></a>
+                class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center m-2">{{ book.bookcase_owner}}
+                <span class="badge rounded-pill">Visit your bookcase</span></a>
             {% else %}
             <a href="{% url 'bookcase_detail' book.bookcase_owner.id  %}"
-                class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center m-3">{{ book.bookcase_owner}}
+                class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center m-2">{{ book.bookcase_owner}}
                 <span class="badge rounded-pill">Visit bookcase</span></a>
             {% endif %}
             {% endfor%}
