@@ -8,6 +8,10 @@ a {
     text-decoration: none;
 }
 
+.container-fluid{
+    overflow: hidden;
+}
+
 .text-muted{
     font-size: 25px;
     color:#A19F9E;

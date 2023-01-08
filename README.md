@@ -57,28 +57,28 @@ The total number of user stories used were: 39
  | 7 | Registered User | Display my own bookcase | So I can inspire others with the books I read |
  | 8 | Registered User | Navigate between the different site pages | So I see either books, bookcases or my own bookcase |
  | 9 | Registered User | View books paginated when more than 9 | Take the content to me in structured fashion |
- | 9 | Developer | Create auto generated slugs | Connect books & bookcase detail pages to the correct book/bookcase | 
- | 10 | Site Owner | Showcase a few books & functionalities | Give website visitors a quick sense of the types of books and functionalities available on my website | 
+ | 10 | Developer | Create auto generated slugs | Connect books & bookcase detail pages to the correct book/bookcase | 
+ | 11 | Site Owner | Showcase a few books & functionalities | Give website visitors a quick sense of the types of books and functionalities available on my website | 
   | [Manage Bookcase](https://github.com/MerelMoehn/favoreads/issues?q=label%3A%22Manage+Bookcase%22+is%3Aclosed) | 
- | 11 | Registered User | Update the reading status of my book | Show others an up to date bookcase | 
- | 12 | Registered User | Delete a book out of my bookcase | Show others an up to date bookcase |
- | 13 | Registered User | Automatically add a submitted book to my bookcase | So that I don't have to do this manually |
- | 14 | Registered User | See a confirmation message of my action | So that I know what is happening |
+ | 12 | Registered User | Update the reading status of my book | Show others an up to date bookcase | 
+ | 13 | Registered User | Delete a book out of my bookcase | Show others an up to date bookcase |
+ | 14 | Registered User | Automatically add a submitted book to my bookcase | So that I don't have to do this manually |
+ | 15 | Registered User | See a confirmation message of my action | So that I know what is happening |
  | [Account Management](https://github.com/MerelMoehn/favoreads/issues?q=label%3A%22Account+management%22+is%3Aclosed) | 
- | 15 | Unregistered User | Easily register for an account | Join this book community | 
- | 16 | Registered User | Easily login or logout | View bookcases, upload books, and manage my bookcase | 
- | 17 | Registered User | Easily recover my password | Access my account even if I've forgotten my password | 
- | 18 | Unregistered User | Get an impression of the application from the homepage | Understand what the project is about | 
+ | 16 | Unregistered User | Easily register for an account | Join this book community | 
+ | 17 | Registered User | Easily login or logout | View bookcases, upload books, and manage my bookcase | 
+ | 18 | Registered User | Easily recover my password | Access my account even if I've forgotten my password | 
+ | 19 | Unregistered User | Get an impression of the application from the homepage | Understand what the project is about | 
   | [Project Prerequisites](https://github.com/MerelMoehn/favoreads/issues?q=label%3A%22project+prerequisites%22+is%3Aclosed) | 
- | 19 | Developer | Set up my project | Build the base layout of my application |
- | 20 | Developer | Create the Data Models | Support my application with data | 
- | 21 | Developer | Deploy my application early | Check frequently if everything is working properly | 
- | 22 | Developer | Create automated tests | Ensure a reliable application | 
- | 23 | Developer | Create understandable code via commenting | Help other developers understand it |
+ | 20 | Developer | Set up my project | Build the base layout of my application |
+ | 21 | Developer | Create the Data Models | Support my application with data | 
+ | 22 | Developer | Deploy my application early | Check frequently if everything is working properly | 
+ | 23 | Developer | Create automated tests | Ensure a reliable application | 
+ | 24 | Developer | Create understandable code via commenting | Help other developers understand it |
   | [Documentation](https://github.com/MerelMoehn/favoreads/issues?q=label%3Adocumentation+is%3Aclosed) |
-| 24 | Developer | Create Wireframes | Ensure my application is properly designed | 
-| 25 | Developer | Create a LucidChart Data Model | Ensure my Data Models are designed & documented correctly | 
-| 26 | Developer | Document in a ReadMe file | Ensure my application is documented correctly & sufficiently | 
+| 25 | Developer | Create Wireframes | Ensure my application is properly designed | 
+| 26 | Developer | Create a LucidChart Data Model | Ensure my Data Models are designed & documented correctly | 
+| 27 | Developer | Document in a ReadMe file | Ensure my application is documented correctly & sufficiently | 
 
 
 ### Project Planning
@@ -201,6 +201,8 @@ Each site page has been checked with Lighthouse and the following improvements h
 * include meta tag on page
 * Language has been set in base.html
 * Non unique ARIA IDs are made unique
+* Remove big layout shift with buttons for user bookcase
+After these changes the page with the lowest score still scores green:
 
 ### Manual Testing
 

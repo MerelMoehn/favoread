@@ -52,9 +52,12 @@
                                 {% if "book_preview" in book.featured_image.url %}
                                 <img class="card-img-top"
                                     src=https://res.cloudinary.com/duz5vkvkt/image/upload/v1672925793/Book_greenleave_small_ayqdym.png
+                                    style="max-width: 300px;"
                                     alt="Book with green leave">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ book.featured_image.url }}" alt="Image of book">
+                                <img class="card-img-top" src=" {{ book.featured_image.url }}" alt="Image of book"
+                                style="max-width: 300px;"
+                                alt="Image of Book">>
                                 {% endif %}
                                 <div class="image-flash">
                                 </div>

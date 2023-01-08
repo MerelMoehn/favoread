@@ -104,7 +104,7 @@ class UserBookcase(View):
             bookcase_owner=current_owner, book__approved=True)
 
         # To add pagination, show 9 books per page
-        paginator = Paginator(bookcase_books, 6)
+        paginator = Paginator(bookcase_books, 9)
 
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
