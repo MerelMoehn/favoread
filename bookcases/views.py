@@ -107,7 +107,7 @@ class UserBookcase(View):
         paginator = Paginator(bookcase_books, 9)
 
         page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
+        bookcase_books = paginator.get_page(page_number)
 
         return render(
             request,
@@ -115,7 +115,6 @@ class UserBookcase(View):
             {
                 "books": bookcase_books,
                 "user": current_owner,
-                "page_obj": page_obj,
             },
         )
 
@@ -154,6 +153,12 @@ class VisitBookcase(View):
         bookcase_books = Bookcase_book.objects.filter(
             bookcase_owner=owner, book__approved=True)
         selected_owner = get_object_or_404(User, id=owner)
+
+        # To add pagination, show 9 books per page
+        paginator = Paginator(bookcase_books, 9)
+
+        page_number = request.GET.get('page')
+        bookcase_books = paginator.get_page(page_number)
 
         return render(
             request,
