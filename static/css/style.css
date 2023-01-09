@@ -1,5 +1,4 @@
 body {
-    background-color: #F2EEED;
     font-family: Arial, Helvetica, sans-serif;
     color: #241F1C;
 }
@@ -12,9 +11,6 @@ a {
     overflow: hidden;
 }
 
-.icon {
-    color: #41585A;
-}
 
 footer {
     background-color: #A19F9E;
@@ -50,12 +46,14 @@ footer {
 .book-title{
     color:  #41585A;
     font-size: 18px;
+    text-decoration: underline;
 }
 
 .author{
     color:#A19F9E;
     font-size: 16px;
     font-weight: 600;
+    text-decoration: underline;
 }
 
 
