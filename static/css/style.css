@@ -90,6 +90,10 @@ footer {
     font-size: 14px;
 }
 
+.cover{
+    object-fit: fill;
+}
+
 
 /* Styling for messages */
 .success{

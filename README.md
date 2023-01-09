@@ -10,15 +10,15 @@ FavoReads is an application where users can create their own online bookcase whi
 
 The last update to this file was: **January 14, 2023**
 
-## Deployed project
+# Deployed project
 The app can be accessed via the following link:
 
-## General introduction and instructions
+# General introduction and instructions
 
 ## Project Approach
 This application is built using an agile approach. Therefore, the functionalities were broken down into Epics & User stories, and these picked up in three sprints. Each sprint consisted of one week. 
 
-### Epics & labels
+## Epics & labels
 The application features were broken down into Epics and hence in User Stories. 
 For each User Story, a issue was created. The corresponding Epic was depicted via a label.
 There were two additional labels: Front-End, Back-End. For each User Story it was often the case that there were some BE and FE functionalities. Therefore, most User Stories were split into two User Stories, one for BE, one for FE.
@@ -37,7 +37,7 @@ Additional labels used:
 - Front-end: to label user stories focused on the Front-end
 - Back-end: to label user stories focused on the Back-end
 
-### User stories
+## User stories
 
 In the table below is an overview of the distinct User Stories. What I mean by that is the following, as mentioned some user stories are divided into two: FE & BE. The User Story is only named once in the table below.
 In addition, some User Stories have overlap between the EPICS, for example, messaging. These are also only named once, but may be implemented for other EPICS as well.
@@ -81,7 +81,7 @@ The total number of user stories used were: 39
 | 27 | Developer | Document in a ReadMe file | Ensure my application is documented correctly & sufficiently | 
 
 
-### Project Planning
+## Project Planning
 The project was planned and built in three sprints each consisting of one week. The project tool used was GitHub Projects & Issues. The issues were mapped on a kanban board using Epic, and FE&BE labels.
 
 When I started working on an User Story, the story was added to the milestone and dragged and dropped into "in progress", when finished, the story was dragged & dropped into the "done" lane.
@@ -94,12 +94,12 @@ I decided to focus on creating the main back-end functionalities first before fo
 [View stories included in sprint 3.](https://github.com/MerelMoehn/favoreads/milestone/3)
 
 
-## Features
+# Features
 
 ![Image of username input](./assets/images/username_input.png)
 * Username input: the player is asked to insert his/her name.
 
-### Future Features
+## Future Features
 The following features would be nice to add in the future:
 
 - BookClub/Commenting functionality: it would be nice if FavoReads could also act as a BookClub community. One feature could therefore be to allow commenting on a specific book to be able to discuss the book online. 
@@ -108,8 +108,8 @@ The following features would be nice to add in the future:
 
 - Search functionality: being able to search the website for a book or bookcase owner via a search bar would probably increase the user experience. 
 
-## Design & wireframing
-### Colourscheme
+# Design & wireframing
+## Colourscheme
 The design of the FavoReads application is based on the image below. Four colours are extracted and used for the main elements on the page. An additional colour was picked for the typografie. 
 * Color for NavBar and Icons: #41585A
 * Color for buttons and excerpt: #9A602A
@@ -118,19 +118,19 @@ The design of the FavoReads application is based on the image below. Four colour
 * Color for text: #241F1C
 <img src="media/readme_images/DesignColours_favoreads.png">
 
-### Typography
+## Typography
 
 - The typography used within the application is the following font-family: Arial, Helvetica, sans-serif. These fonts were used because they are a fairly safe choice and do not distract the attention from the books. 
 
-### Cards
+## Cards
 
 - I have used Bootstrap cards to visually organise content and to make the bookcase pages look like an actual bookcase.
 
-### Icons
+## Icons
 
 - I used icons from Font Awesome website. They are used on the index page to depict the three main features of the website.
 
-### Imagery 
+## Imagery 
 
 - Imagery is used to give the application a more sophisticated look and to make it feel like an actual online bookcase.
 
@@ -139,7 +139,7 @@ The design of the FavoReads application is based on the image below. Four colour
 - The user is able to provide an image of the book when submitting a book. When no book is uploaded the default book image is used.
 
 
-### WireFrames
+## WireFrames
 
 [Click here for related user story.](https://github.com/MerelMoehn/favoreads/issues/20)
 The wireframes created for this project were made in the online tool Miro. 
@@ -148,13 +148,13 @@ The wireframes were used as a rough sketch of what the application was meant to 
 After initial set up of the main features the design was further implemented based on the design as described above.
 <img src="media/readme_images/FavoReads Wireframing (1).jpg">
 
-## Data model
+# Data model
 [Click here for related user story.](https://github.com/MerelMoehn/favoreads/issues/14)
 The data model was created in LucidChart. 
 The first data model included three models: Book, Bookcase, Bookcase_Book.
 After implementing the first features and templates I realized that there was no need for three different models and that two models would suffice: Book and Bookcase_book. As the Bookcase_Book combines both the owner of the bookcase and the specific books, it acts as they bookcase for different users.
 
-### The Book model
+## The Book model
 The Book model includes the following fields:
 * Title: The title of the book, which needs to be unique. 
 * Slug: A unique auto generated slug that will be used to create the  URL to navigate to a specific bookpage.
@@ -165,7 +165,7 @@ The Book model includes the following fields:
 * Approved: A True or False field, whether or not the admin has approved the book.
 The Book model also has a method that auto generates a slug based on the title of the book. 
 
-### The Bookcase_book Model
+## The Bookcase_book Model
 The Bookcase_book model includes the following fields:
 * Bookcase_owner: A ForeignKey of the model User. Registers which User has added this book to his/her bookcase.
 * Book: A ForeignKey of the model Book. Registers which Book it is about.
@@ -174,15 +174,42 @@ The Bookcase_book model includes the following fields:
 
 <img src="media/readme_images/FavoReads_DataModel_Updated.png">
 
-## External Libraries
+# Technology used
+## Languages used
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+- [CSS](https://en.wikipedia.org/wiki/CSS)
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+
+## Frameworks & Libraries used
+- [Django](https://www.djangoproject.com/)
+  - This website is built using Django, a high-level Python web framework. I have also used Django to provide an admin view, create forms and test my website. Further features used include 
+  
+- [Django Allauth](https://django-allauth.readthedocs.io/en/latest/index.html) I used Allauth for user authentification. 
+  
+- Crispy Forms for styling my forms
+
+- [jQuery](https://jquery.com/)
+  - I used jQuery to add functionality to Bootstrap components and within my scripts.
+
+- [Bootstrap 4](https://getbootstrap.com/) 
+  - I used bootstrap throughout the site to make it responsive. I sourced code from the Bootstrap documentation when building the Navbar, Cards, Messages and Buttons.
+
+- [Google Fonts](https://fonts.google.com/)
+  - Fonts are imported from google fonts.
+  
+- [Font awesome](https://fontawesome.com/)
+  - I used icons from font awesome on the index page.
+
 For this project I made us of several external libraries:
 * SummerNote
 * Coverage
 * AllAuth
 * Crispy Forms
 
-## Testing
-### Validators
+# Testing
+## Validators
+### CI Python Linter
 All custom code passed the the CI Python Linter validation, without any errors.
 The following files were passed through the linter:
 * admin.py
@@ -196,6 +223,7 @@ The following files were passed through the linter:
 * urls.py
 * views.py
 
+### Lighthouse
 Each site page has been checked with Lighthouse and the following improvements have been made:
 * Using smaller images to load page faster
 * include meta tag on page
@@ -204,22 +232,27 @@ Each site page has been checked with Lighthouse and the following improvements h
 * Remove big layout shift with buttons for user bookcase
 After these changes the page with the lowest score still scores green:
 
-### Manual Testing
+### W3C CSS Validation
+The style.css code has been validated by the W3C CSS validator and passed without any errors.
 
-### Automated testing
+## Manual Testing
+Most manual testing has been done to check responsiveness and to complete a final walkthrough of the functionalities. This resulted in the bug to fix the responsiveness of the 'My Bookcase page'. [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/41) 
+
+
+## Automated testing
 In total there are 21 one automated test which cover 100% of the application.
 <img src="media/readme_images/CoverageReport_Favoreads.png">
 All tests pass. 
 <img src="media/readme_images/Automated_test_results_FavoReads.png">
 
-### Bugs found and solved
-Refer to Github board
+## Bugs found and solved
+Throughout the project there were multiple bugs found and solved. These bugs were logged on the GitHub project and can be reviewed via the following link: [Click here to review the bugs.](https://github.com/MerelMoehn/favoreads/issues?q=label%3Abug+is%3Aclosed) 
 
 ### Unsolved bugs
+At the moment of submitting and deployment, there were no unresolved bugs.
 
-
-## Deployment
-### Heroku
+# Deployment
+## Heroku
 The project was deployed to Heroku using the following steps:
 1. I pushed my final code via the terminal after finishing the project.
 2. I created a new Heroku app
@@ -228,9 +261,9 @@ The project was deployed to Heroku using the following steps:
 5. I pushed my final code via the terminal after finishing the project.
 6. Then I selected 'deploy'
 
-### ElephantSQL
+## ElephantSQL
 
-### Creating a local clone
+## Creating a local clone
 You can create a local clone of the repository via the following steps:
 1. navigate to the main page of the repository
 2. download the code
@@ -243,11 +276,21 @@ You can create a local clone of the repository via the following steps:
 For more detailed instructions, navigate to the following page:
 https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 
-## Credits
-### Code
+# Credits
+## Code
+### Code Institute:
+  - I based the set up of this project on the Code Institute Django walkthrough projects. I have customised my website wherever possible.
 
+### Django:
+  - I referred to the Django documentation whilst building my project.
 
-### Acknowledgements
+### Bootstrap:
+  - I have used Bootstrap classes throughout my project, including for layout utilities and cards. I sourced code from the Bootstrap documentation when building the Navbar, Cards, Dropdown, and pagination.
+
+## Acknowledgements
+- Thank you to my mentor for helpful feedback, industry insights and recommended tools.
+
+- Thank you to the tutors and staff at Code Institute for their support.
 
 
 Thank you!
