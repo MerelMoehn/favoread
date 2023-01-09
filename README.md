@@ -95,9 +95,39 @@ I decided to focus on creating the main back-end functionalities first before fo
 
 
 # Features
+This application has several features which I will highlight per page.
 
-![Image of username input](./assets/images/username_input.png)
-* Username input: the player is asked to insert his/her name.
+- On the 'Home' page (index.html) the user can make us of the following features:
+  - Register
+  - Log-in
+  - Log-out
+  - Go to the detail pages of three highlighted books, ordered based on last submitted
+- On the 'Submit a book' page (submit_book.html) the user can make us of the following features:
+  - Fill in the form to submit a book
+  - Get feedback whether the action above has succeeded or not
+- On the 'My Bookcase' page (user_bookcase.html) the user can make us of the following features:
+  - See all the books in his/her bookcase
+  - Update the reading status of each book in the bookcase
+  - Delete a book from the bookcase
+  - Receive a message when doing one of the above two actions
+  - Navigate between pages of books in the bookcase (pagination)
+- On the 'Bookcases' page (bookcases.html) the user can make use of the following features:
+  - See a list of other user of the application
+  - Click on a user to go to their bookcase
+  - Navigate between pages of users in the list (pagination)
+- On the 'Bookcase detail' page (bookcase_detail.html) the user can make us of the following features:
+  - See all the books in the bookcase of the selected user
+  - Click on a book to go to the book_detail page
+  - Navigate between pages of books in the bookcase (pagination)
+- On the 'Book detail' page (book_detail.html) the user can make use of the following features:
+  - See the book details
+  - Add the book to his/her own bookcase
+  - Get feedback whether the action above has succeeded or not
+
+The admin user has additional functionalities:
+  - Log in to the admin panel
+  - Review Users, Books, and Bookcase_books
+  - Approve Books
 
 ## Future Features
 The following features would be nice to add in the future:
@@ -123,24 +153,18 @@ The design of the FavoReads application is based on the image below. Four colour
 - The typography used within the application is the following font-family: Arial, Helvetica, sans-serif. These fonts were used because they are a fairly safe choice and do not distract the attention from the books. 
 
 ## Cards
-
 - I have used Bootstrap cards to visually organise content and to make the bookcase pages look like an actual bookcase.
 
 ## Icons
-
 - I used icons from Font Awesome website. They are used on the index page to depict the three main features of the website.
 
 ## Imagery 
-
 - Imagery is used to give the application a more sophisticated look and to make it feel like an actual online bookcase.
-
 - Images are mostly displayed within Bootstrap cards to mock the idea of a bookcase depicting multiple books next to each other.
-
 - The user is able to provide an image of the book when submitting a book. When no book is uploaded the default book image is used.
-
+- The images have been downloaded from Unsplash.com
 
 ## WireFrames
-
 [Click here for related user story.](https://github.com/MerelMoehn/favoreads/issues/20)
 The wireframes created for this project were made in the online tool Miro. 
 
@@ -184,10 +208,8 @@ The Bookcase_book model includes the following fields:
 ## Frameworks & Libraries used
 - [Django](https://www.djangoproject.com/)
   - This website is built using Django, a high-level Python web framework. I have also used Django to provide an admin view, create forms and test my website. Further features used include 
-  
-- [Django Allauth](https://django-allauth.readthedocs.io/en/latest/index.html) I used Allauth for user authentification. 
-  
-- Crispy Forms for styling my forms
+  - [Django Allauth](https://django-allauth.readthedocs.io/en/latest/index.html) I used Allauth for user authentification. 
+  - [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)I used Crispy Forms for styling my form.
 
 - [jQuery](https://jquery.com/)
   - I used jQuery to add functionality to Bootstrap components and within my scripts.
@@ -201,11 +223,8 @@ The Bookcase_book model includes the following fields:
 - [Font awesome](https://fontawesome.com/)
   - I used icons from font awesome on the index page.
 
-For this project I made us of several external libraries:
-* SummerNote
-* Coverage
-* AllAuth
-* Crispy Forms
+- [Cloudinary](https://cloudinary.com/)
+  - I used images that were stored on Cloudinary.
 
 # Testing
 ## Validators
@@ -230,14 +249,13 @@ Each site page has been checked with Lighthouse and the following improvements h
 * Language has been set in base.html
 * Non unique ARIA IDs are made unique
 * Remove big layout shift with buttons for user bookcase
-After these changes the page with the lowest score still scores green:
+After these changes all pages score green numbers.
 
 ### W3C CSS Validation
 The style.css code has been validated by the W3C CSS validator and passed without any errors.
 
 ## Manual Testing
 Most manual testing has been done to check responsiveness and to complete a final walkthrough of the functionalities. This resulted in the bug to fix the responsiveness of the 'My Bookcase page'. [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/41) 
-
 
 ## Automated testing
 In total there are 21 one automated test which cover 100% of the application.
@@ -262,6 +280,17 @@ The project was deployed to Heroku using the following steps:
 6. Then I selected 'deploy'
 
 ## ElephantSQL
+The database was set up by following the steps beneath:
+1. Log in to ElephantSQL.com to access your dashboard
+2. Click “Create New Instance”
+3. Set up your plan
+4. Select “Select Region”
+5. Select a data center near you
+6. Then click “Review”
+7. Check your details are correct and then click “Create instance”
+8. Return to the ElephantSQL dashboard and click on the database instance name for this project
+9. In the URL section, click the copy icon to copy the database URL
+10. The proper steps were taken in the settings.py file to connect with the database.
 
 ## Creating a local clone
 You can create a local clone of the repository via the following steps:
