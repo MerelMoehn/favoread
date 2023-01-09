@@ -4,7 +4,7 @@
 
 <div class="container-fluid g-0">
         <div class="row">
-            <div class="col-md-6 mb-3 mt-3 text-center align-self-center">
+            <div class="col-md-7 mb-3 mt-3 text-center align-self-center">
                 <h1>Welcome to Favoreads</h1>
                 <p>The place for daily book inspiration.</p>
                 {% if user.is_authenticated %}
@@ -15,9 +15,9 @@
                 <a class="btn btn-color" href="{% url 'account_signup' %}">Let's get started!</a>
                 {% endif %}
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5 align-self-end">
                 <img src="https://res.cloudinary.com/duz5vkvkt/image/upload/v1672922204/bookcase_blue_vhu8v2.jpg"
-                    class="img-fluid rounded" alt="hero image of bookcase">
+                class="img-fluid rounded" alt="hero image of bookcase">
             </div>
         </div>
 
