@@ -11,7 +11,9 @@ FavoReads is an application where users can create their own online bookcase whi
 The last update to this file was: **January 14, 2023**
 
 # Deployed project
-The app can be accessed via the following link:
+The app can be accessed via the following link: [Click to go to Website](https://favoreads.herokuapp.com/) 
+
+<img src="media/readme_images/FavoReads_Impression.png">
 
 # General introduction and instructions
 
@@ -42,7 +44,7 @@ Additional labels used:
 In the table below is an overview of the distinct User Stories. What I mean by that is the following, as mentioned some user stories are divided into two: FE & BE. The User Story is only named once in the table below.
 In addition, some User Stories have overlap between the EPICS, for example, messaging. These are also only named once, but may be implemented for other EPICS as well.
 
-The total number of user stories used were: 39
+The total number of user stories used were: 41
 
 | User Story ID | As a/an | I want to be able to... | So that I can... |
 | --- | ----------- | ----------- | ----------- |
