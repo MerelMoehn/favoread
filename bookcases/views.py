@@ -44,7 +44,7 @@ class SubmitBook(View):
 
         else:
             submit_form = SubmitForm()
-            messages.error(request, 'Oeps, something went wrong, try again.')
+            messages.error(request, 'Oeps, something went wrong. Maybe this title already exists.')
 
         return HttpResponseRedirect(reverse('submit_book'))
 
