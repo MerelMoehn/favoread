@@ -77,7 +77,6 @@ class Bookcases(View):
         books = None
         query = None
         if 'q' in request.GET:
-            searched = True
             query = request.GET['q']
             if not query:
                 messages.error(request, "You didn't enter search criteria")
