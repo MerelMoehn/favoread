@@ -41,6 +41,11 @@ footer {
     font-size: 13px;
 }
 
+.btn-search{
+    border-color: #9A602A;
+    color: #9A602A;
+}
+
 
 /* styling for book cards */
 .book-title{

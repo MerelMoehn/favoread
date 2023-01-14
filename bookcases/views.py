@@ -11,7 +11,7 @@ from .forms import SubmitForm
 
 class BookList(generic.ListView):
     model = Book
-    queryset = Book.objects.filter(approved=True).order_by('-created_on')[:3]
+    queryset = Book.objects.filter(approved=True, deleted=False).order_by('-created_on')[:3]
     template_name = 'index.html'
 
 
@@ -105,7 +105,8 @@ class UserBookcase(View):
         # to display the bookcase
         current_owner = request.user
         bookcase_books = Bookcase_book.objects.filter(
-            bookcase_owner=current_owner, book__approved=True)
+            bookcase_owner=current_owner, book__approved=True,
+            book__deleted=False)
 
         # To add pagination, show 9 books per page
         paginator = Paginator(bookcase_books, 9)
@@ -135,15 +136,28 @@ class DeleteBookcaseBook(View):
         return HttpResponseRedirect(reverse('user_bookcase'))
 
 
-# class DeleteBook(View):
+class DeleteBook(View):
 
-#     def post(self, request, book, *args, **kwargs):
-#         # Deletes a Book instance
-#         book_to_delete = get_object_or_404(
-#             Book, id=book)
-#         book_to_delete.deleted = True
-#         messages.success(request, 'The book has been deleted')
-#         return HttpResponseRedirect(reverse('book_detail'))
+    def post(self, request, book, *args, **kwargs):
+        # Sets a Book instance deleted to True (soft delete)
+        book_to_delete = get_object_or_404(
+            Book, id=book)
+        print(book_to_delete)
+        book_to_delete.deleted = True
+        book_to_delete.save()
+        print(book_to_delete.deleted)
+        messages.success(request, 'The book has been deleted')
+        return HttpResponseRedirect(reverse('home'))
+
+
+# class SearchResultsView(ListView):
+#     model = Book
+#     template_name = "bookcases.html"
+
+#     def get_queryset(self):  
+#         query = self.request.GET.get("title")
+#         object_list = Book.objects.filter(title=query)
+#         return object_list
 
 
 class UpdateStatus(View):
@@ -166,7 +180,7 @@ class VisitBookcase(View):
     # To display bookcases of other users
     def get(self, request, owner, *args, **kwargs):
         bookcase_books = Bookcase_book.objects.filter(
-            bookcase_owner=owner, book__approved=True)
+            bookcase_owner=owner, book__approved=True, book__deleted=False)
         selected_owner = get_object_or_404(User, id=owner)
 
         # To add pagination, show 9 books per page

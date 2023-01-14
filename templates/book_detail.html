@@ -4,18 +4,21 @@
 <div class="container">
     <div class="row mt-5 ">
         <div class="col-md-6">
+            {% if book.deleted %}
+            <p class="error">This book has been deleted</p>
+            {% endif %}
             {% if user.is_authenticated %}
             <form action="{% url 'add_book' book.slug %}" method="POST">
                 {% csrf_token %}
                 <button class="btn btn-color" type="submit" name="book" value="{{book.slug}}">Add to Bookcase</button>
             </form>
-            {% endif %}
             {% if book.submitted_by.id == user.id %}
-            <form action="{#}" method="POST">
+            <form action="{% url 'delete_book' book.id %}" method="POST">
                 {% csrf_token %}
                 <button class="btn btn-delete" type="submit" name="book"
                     value="{{book.book.id}}">Delete</button>
             </form>
+            {% endif %}
             {% endif %}
             <hr>
             <h1>{{ book.title }}</h1>

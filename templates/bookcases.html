@@ -6,39 +6,49 @@
     <div class="row text-center">
         <div class="col mt-5 mb-2">
             <h1>Get Inspired</h1>
-            <p>Browse the bookcases of other users to find your next book! </p>
+            <p>Browse the bookcases of other users to find your next book, or search for a specific book!</p>
         </div>
     </div>
-    <div class="row list-group mb-3">
-        <div class="col-md-8 align-self-center">
-            {% for book in bookcases %}
-            {% if book.bookcase_owner.id == user.id %}
-            <a href="{% url 'user_bookcase'  %}"
-                class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center m-2">{{ book.bookcase_owner}}
-                <span class="badge rounded-pill">Visit your bookcase</span></a>
-            {% else %}
-            <a href="{% url 'bookcase_detail' book.bookcase_owner.id  %}"
-                class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center m-2">{{ book.bookcase_owner}}
-                <span class="badge rounded-pill">Visit bookcase</span></a>
-            {% endif %}
-            {% endfor%}
+    <div class="row text-center justify-content-center">
+        <div class="col-md-4 mb-3">
+            <form class="input-group" action="#" method="get">
+                <input name="title" class="form-control rounded" type="Search" aria-label="Search"
+                    placeholder="Enter title...">
+                <button type="button" class="btn btn-search">search</button>
+            </form>
         </div>
+        <div class="row list-group mb-3">
+            <div class="col-md-8 align-self-center">
+                {% for book in bookcases %}
+                {% if book.bookcase_owner.id == user.id %}
+                <a href="{% url 'user_bookcase'  %}"
+                    class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center m-2">{{ book.bookcase_owner}}
+                    <span class="badge rounded-pill">Visit your bookcase</span></a>
+                {% else %}
+                <a href="{% url 'bookcase_detail' book.bookcase_owner.id  %}"
+                    class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center m-2">{{ book.bookcase_owner}}
+                    <span class="badge rounded-pill">Visit bookcase</span></a>
+                {% endif %}
+                {% endfor%}
+            </div>
+        </div>
+        {% if is_paginated %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-color page-link">&laquo; PREV
+                    </a>
+                </li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-color page-link"> NEXT &raquo;</a>
+                </li>
+
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
     </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-color page-link">&laquo; PREV </a>
-            </li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-color page-link"> NEXT &raquo;</a></li>
 
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
-</div>
-
-{%endblock%}
-{%endif%}
+    {%endblock%}
+    {%endif%}
