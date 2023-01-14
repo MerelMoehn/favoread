@@ -44,7 +44,7 @@ Additional labels used:
 In the table below is an overview of the distinct User Stories. What I mean by that is the following, as mentioned some user stories are divided into two: FE & BE. The User Story is only named once in the table below.
 In addition, some User Stories have overlap between the EPICS, for example, messaging. These are also only named once, but may be implemented for other EPICS as well.
 
-The total number of user stories used were: 41
+The total number of issues created are: 44
 
 | User Story ID | As a/an | I want to be able to... | So that I can... |
 | --- | ----------- | ----------- | ----------- |
@@ -59,41 +59,44 @@ The total number of user stories used were: 41
  | 7 | Registered User | Display my own bookcase | So I can inspire others with the books I read |
  | 8 | Registered User | Navigate between the different site pages | So I see either books, bookcases or my own bookcase |
  | 9 | Registered User | View books paginated when more than 9 | Take the content to me in structured fashion |
- | 10 | Developer | Create auto generated slugs | Connect books & bookcase detail pages to the correct book/bookcase | 
- | 11 | Site Owner | Showcase a few books & functionalities | Give website visitors a quick sense of the types of books and functionalities available on my website | 
+ | 10 | Registered User | Delete books | Make sure there are no incorrect books |
+ | 11 | Registered User | Search books | Easily find a book |
+ | 12 | Developer | Create auto generated slugs | Connect books & bookcase detail pages to the correct book/bookcase | 
+ | 13 | Site Owner | Showcase a few books & functionalities | Give website visitors a quick sense of the types of books and functionalities available on my website | 
   | [Manage Bookcase](https://github.com/MerelMoehn/favoreads/issues?q=label%3A%22Manage+Bookcase%22+is%3Aclosed) | 
- | 12 | Registered User | Update the reading status of my book | Show others an up to date bookcase | 
- | 13 | Registered User | Delete a book out of my bookcase | Show others an up to date bookcase |
- | 14 | Registered User | Automatically add a submitted book to my bookcase | So that I don't have to do this manually |
- | 15 | Registered User | See a confirmation message of my action | So that I know what is happening |
+ | 14 | Registered User | Update the reading status of my book | Show others an up to date bookcase | 
+ | 15 | Registered User | Delete a book out of my bookcase | Show others an up to date bookcase |
+ | 16 | Registered User | Automatically add a submitted book to my bookcase | So that I don't have to do this manually |
+ | 17 | Registered User | See a confirmation message of my action | So that I know what is happening |
  | [Account Management](https://github.com/MerelMoehn/favoreads/issues?q=label%3A%22Account+management%22+is%3Aclosed) | 
- | 16 | Unregistered User | Easily register for an account | Join this book community | 
- | 17 | Registered User | Easily login or logout | View bookcases, upload books, and manage my bookcase | 
- | 18 | Registered User | Easily recover my password | Access my account even if I've forgotten my password | 
- | 19 | Unregistered User | Get an impression of the application from the homepage | Understand what the project is about | 
+ | 18 | Unregistered User | Easily register for an account | Join this book community | 
+ | 19 | Registered User | Easily login or logout | View bookcases, upload books, and manage my bookcase | 
+ | 20 | Registered User | Easily recover my password | Access my account even if I've forgotten my password | 
+ | 21 | Unregistered User | Get an impression of the application from the homepage | Understand what the project is about | 
   | [Project Prerequisites](https://github.com/MerelMoehn/favoreads/issues?q=label%3A%22project+prerequisites%22+is%3Aclosed) | 
- | 20 | Developer | Set up my project | Build the base layout of my application |
- | 21 | Developer | Create the Data Models | Support my application with data | 
- | 22 | Developer | Deploy my application early | Check frequently if everything is working properly | 
- | 23 | Developer | Create automated tests | Ensure a reliable application | 
- | 24 | Developer | Create understandable code via commenting | Help other developers understand it |
+ | 22 | Developer | Set up my project | Build the base layout of my application |
+ | 23 | Developer | Create the Data Models | Support my application with data | 
+ | 24 | Developer | Deploy my application early | Check frequently if everything is working properly | 
+ | 25 | Developer | Create automated tests | Ensure a reliable application | 
+ | 26 | Developer | Create understandable code via commenting | Help other developers understand it |
   | [Documentation](https://github.com/MerelMoehn/favoreads/issues?q=label%3Adocumentation+is%3Aclosed) |
-| 25 | Developer | Create Wireframes | Ensure my application is properly designed | 
-| 26 | Developer | Create a LucidChart Data Model | Ensure my Data Models are designed & documented correctly | 
-| 27 | Developer | Document in a ReadMe file | Ensure my application is documented correctly & sufficiently | 
+| 27| Developer | Create Wireframes | Ensure my application is properly designed | 
+| 28 | Developer | Create a LucidChart Data Model | Ensure my Data Models are designed & documented correctly | 
+| 29 | Developer | Document in a ReadMe file | Ensure my application is documented correctly & sufficiently | 
 
 
 ## Project Planning
-The project was planned and built in three sprints each consisting of one week. The project tool used was GitHub Projects & Issues. The issues were mapped on a kanban board using Epic, and FE&BE labels.
+The project was planned and built in four sprints each consisting of one week. The project tool used was GitHub Projects & Issues. The issues were mapped on a kanban board using Epic, and FE&BE labels.
 
 When I started working on an User Story, the story was added to the milestone and dragged and dropped into "in progress", when finished, the story was dragged & dropped into the "done" lane.
 To clarify, I only noticed when having finished 95% of my project that setting a story to 'done' did not close the story. Therefore most of the stories have the same closing date.
 
 I decided to focus on creating the main back-end functionalities first before focusing on front-end. This decision was made based on the availability of support during the Christmas holidays. 
 
-[View stories included in sprint 1.](https://github.com/MerelMoehn/favoreads/milestone/1?closed=1)
-[View stories included in sprint 2.](https://github.com/MerelMoehn/favoreads/milestone/2?closed=1)
-[View stories included in sprint 3.](https://github.com/MerelMoehn/favoreads/milestone/3)
+[View stories/bugs included in sprint 1.](https://github.com/MerelMoehn/favoreads/milestone/1?closed=1)
+[View stories/bugs included in sprint 2.](https://github.com/MerelMoehn/favoreads/milestone/2?closed=1)
+[View stories/bugs included in sprint 3.](https://github.com/MerelMoehn/favoreads/milestone/3)
+[View stories/bugs included in sprint 4.](https://github.com/MerelMoehn/favoreads/milestone/4)
 
 
 # Features
@@ -114,6 +117,7 @@ This application has several features which I will highlight per page.
   - Receive a message when doing one of the above two actions
   - Navigate between pages of books in the bookcase (pagination)
 - On the 'Bookcases' page (bookcases.html) the user can make use of the following features:
+  - A search bar functionality to search for books. The user can search via title or author
   - See a list of other user of the application
   - Click on a user to go to their bookcase
   - Navigate between pages of users in the list (pagination)
@@ -124,6 +128,7 @@ This application has several features which I will highlight per page.
 - On the 'Book detail' page (book_detail.html) the user can make use of the following features:
   - See the book details
   - Add the book to his/her own bookcase
+  - Delete this book, the book is then soft deleted (chosen after consultation with mentor)
   - Get feedback whether the action above has succeeded or not
 
 The admin user has additional functionalities:
@@ -136,9 +141,11 @@ The following features would be nice to add in the future:
 
 - BookClub/Commenting functionality: it would be nice if FavoReads could also act as a BookClub community. One feature could therefore be to allow commenting on a specific book to be able to discuss the book online. 
 
-- Bookcase ratings functionality: it could be a nice idea to allow users to like other users' bookcases. While 'likes' are also scrutinized on social media because they are not good for mental health it could increase the application engagement.
+- Bookcase like functionality: it could be a nice idea to allow users to like other users' bookcases. While 'likes' are also scrutinized on social media because they are not good for mental health it could increase the application engagement.
 
-- Search functionality: being able to search the website for a book or bookcase owner via a search bar would probably increase the user experience. 
+- Book rating functionality: it would be nice of users can like or rate books in the future so that highly rated books could be recommended to users by displaying them at the top of the page.
+
+- Extend delete functionality: the delete Book functionality is now a soft delete. This is because, after consultation with my manager, it has been decided that it would be a nice functionality in the future to delete the book permanently after 30 days when the user has soft deleted the book.
 
 # Design & wireframing
 ## Colourscheme
@@ -200,7 +207,7 @@ The Bookcase_book model includes the following fields:
 * Status: A choice field of which the choices are: Reading, Not Started, Read. To indicate whether or not the bookcase owner has read the book in his bookcase.
 * Created_on: A DateTime field indicating when the Bookcase_book was created. This data is used to order the bookcase_books on descending DateTime.
 
-<img src="media/readme_images/FavoReads_DataModel_Updated.png">
+<img src="media/readme_images/Favoreads_datamodels.png">
 
 # Technology used
 ## Languages used
@@ -262,10 +269,12 @@ The style.css code has been validated by the W3C CSS validator and passed withou
 Most manual testing has been done to check responsiveness and to complete a final walkthrough of the functionalities. This resulted in the bug to fix the responsiveness of the 'My Bookcase page'. [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/41) 
 
 ## Automated testing
-In total there are 21 one automated test which cover 100% of the application.
-<img src="media/readme_images/CoverageReport_Favoreads.png">
+In total there are 22 one automated test which cover 95% of the application.
+One of the views: Bookcases, could not be tested because the local database does not support DISTINCT.
+DISTINCT is used for getting the bookcase_owners only once, to display the list of bookcases.
+<img src="media/readme_images/FavoReads_automated_tests.png">
 All tests pass. 
-<img src="media/readme_images/Automated_test_results_FavoReads.png">
+<img src="media/readme_images/FavoReads_aut_test_results.png">
 
 ## Bugs found and solved
 Throughout the project there were multiple bugs found and solved. These bugs were logged on the GitHub project and can be reviewed via the following link: [Click here to review the bugs.](https://github.com/MerelMoehn/favoreads/issues?q=label%3Abug+is%3Aclosed) 

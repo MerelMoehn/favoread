@@ -111,7 +111,6 @@ class TestViews(TestCase):
 
         book = get_object_or_404(Book, id=self.tbook.id)
         book.refresh_from_db()
-        print(book.deleted)
         messages = [m.message for m in get_messages(response.wsgi_request)]
         self.assertIn(
             'The book has been deleted.',
@@ -125,4 +124,3 @@ class TestViews(TestCase):
 #     def test_get_bookcases_page(self):
 #         response = self.client.get('/bookcases/')
 #         self.assertEqual(response.status_code, 200)
-
