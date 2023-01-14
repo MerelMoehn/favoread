@@ -25,7 +25,7 @@
                                     <h4 class="book-title-bookcase"> {{ book.book }} </h4>
                                 </div>
                                 <div class="col-12 m-1">
-                                    <form action="{% url 'delete_book' book.book.id %}" method="POST">
+                                    <form action="{% url 'delete_bookcase_book' book.book.id %}" method="POST">
                                         {% csrf_token %}
                                         <button class="btn btn-delete" type="submit" name="book"
                                             value="{{book.book.id}}">Delete</button>

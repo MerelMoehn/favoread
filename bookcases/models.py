@@ -14,6 +14,8 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     excerpt = models.TextField(max_length=50)
     featured_image = CloudinaryField('image', default='book_preview')
+    submitted_by = models.ForeignKey(User, on_delete=models.SET_NULL,
+                                     related_name="submitted_by", null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
     deleted = models.BooleanField(default=False)

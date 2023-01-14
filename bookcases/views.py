@@ -32,6 +32,8 @@ class SubmitBook(View):
         submit_form = SubmitForm(request.POST, request.FILES)
         # to add the book to the Book model
         if submit_form.is_valid():
+            new_book = submit_form.save(commit=False)
+            new_book.submitted_by = request.user
             new_book = submit_form.save()
             messages.success(request,
                              'Your book has been submitted for review!')
@@ -44,7 +46,9 @@ class SubmitBook(View):
 
         else:
             submit_form = SubmitForm()
-            messages.error(request, 'Oeps, something went wrong. Maybe this title already exists.')
+            messages.error(request,
+                           'Oeps, something went wrong.'
+                           'Maybe this title already exists.')
 
         return HttpResponseRedirect(reverse('submit_book'))
 
@@ -119,7 +123,7 @@ class UserBookcase(View):
         )
 
 
-class DeleteBook(View):
+class DeleteBookcaseBook(View):
 
     def post(self, request, book, *args, **kwargs):
         # Deletes a Bookcase_book instance for logged-in user
@@ -129,6 +133,17 @@ class DeleteBook(View):
         book_to_delete.delete()
         messages.success(request, 'The book is deleted from your bookcase')
         return HttpResponseRedirect(reverse('user_bookcase'))
+
+
+# class DeleteBook(View):
+
+#     def post(self, request, book, *args, **kwargs):
+#         # Deletes a Book instance
+#         book_to_delete = get_object_or_404(
+#             Book, id=book)
+#         book_to_delete.deleted = True
+#         messages.success(request, 'The book has been deleted')
+#         return HttpResponseRedirect(reverse('book_detail'))
 
 
 class UpdateStatus(View):
