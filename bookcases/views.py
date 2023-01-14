@@ -12,7 +12,8 @@ from .forms import SubmitForm
 
 class BookList(generic.ListView):
     model = Book
-    queryset = Book.objects.filter(approved=True, deleted=False).order_by('-created_on')[:3]
+    queryset = Book.objects.filter(
+        approved=True, deleted=False).order_by('-created_on')[:3]
     template_name = 'index.html'
 
 
@@ -74,7 +75,9 @@ class Bookcases(View):
         bookcases = Bookcase_book.objects.order_by(
             'bookcase_owner').distinct('bookcase_owner')
         books = None
+        query = None
         if 'q' in request.GET:
+            searched = True
             query = request.GET['q']
             if not query:
                 messages.error(request, "You didn't enter search criteria")
@@ -83,9 +86,15 @@ class Bookcases(View):
             queries = Q(title__icontains=query) | Q(author__icontains=query)
             books = Book.objects.filter(queries)
 
+        # To add pagination, show 6 owners per page
+        paginator = Paginator(bookcases, 6)
+        page_number = request.GET.get('page')
+        bookcases = paginator.get_page(page_number)
+
         context = {
             'books': books,
             'bookcases': bookcases,
+            'search_term': query,
             }
         return render(request, 'bookcases.html', context)
 

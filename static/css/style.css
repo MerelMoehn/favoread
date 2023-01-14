@@ -11,6 +11,10 @@ a {
     overflow: hidden;
 }
 
+li {
+    list-style-type: none;
+}
+
 
 footer {
     background-color: #A19F9E;
@@ -44,6 +48,11 @@ footer {
 .btn-search{
     border-color: #9A602A;
     color: #9A602A;
+}
+
+.btn-add{
+    background-color: #41585A;
+    color: #F7F7F7;
 }
 
 

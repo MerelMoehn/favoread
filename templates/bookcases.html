@@ -16,17 +16,25 @@
                     placeholder="Enter title...">
                 <button type="button" class="btn btn-search">search</button>
             </form>
-            <ul>
-                {% for book in books %}
-                  <li>
-                    <a href="{% url 'book_detail' book.slug  %}">
-                        <p>{{ book }}</p>
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
         </div>
-        
+        <div class="row text-center justify-content-center">
+            <div class="col-md-4 mb-3">
+                <ul>
+                    {% if search_term != None %}
+                    {% for book in books %}
+                    <li>
+                        <a href="{% url 'book_detail' book.slug  %}">
+                                <p>{{ book }}</p>
+                        </a>
+                    </li>
+                    {% endfor %}
+                    {% else %}
+                    <p>No matching book was found.</p>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
         <div class="row list-group mb-3">
             <div class="col-md-8 align-self-center">
                 {% for book in bookcases %}
