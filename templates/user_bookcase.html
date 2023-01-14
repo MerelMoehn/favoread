@@ -1,7 +1,8 @@
+{% if user.is_authenticated %}
 {% extends "base.html" %}
 {% block content %}
 
-{% if user.is_authenticated %}
+
 <div class="container-fluid">
     <div class="row text-center">
         <div class="col mt-5 mb-3">
@@ -82,5 +83,6 @@
         </ul>
     </nav>
 </div>
-{%endif%}
+
 {%endblock%}
+{%endif%}

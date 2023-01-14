@@ -1,6 +1,7 @@
+{% if user.is_authenticated %}
 {% extends "base.html" %}
 {% block content %}
-{% if user.is_authenticated %}
+
 <div class="container">
     <div class="row text-center">
         <div class="col mt-5">
@@ -48,5 +49,5 @@
         {% endif %}
     </div>
 </div>
-{%endif%}
 {%endblock%}
+{%endif%}
