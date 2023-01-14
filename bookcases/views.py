@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.db.models import Q
 from .models import Book, Bookcase_book
 from .forms import SubmitForm
 
@@ -68,13 +69,25 @@ class BookDetail(View):
         )
 
 
-class Bookcases(generic.ListView):
-    model = Bookcase_book
-    context_object_name = 'bookcases'
-    queryset = Bookcase_book.objects.order_by(
-        'bookcase_owner').distinct('bookcase_owner')
-    template_name = 'bookcases.html'
-    paginate_by = 6
+class Bookcases(View):
+    def get(self, request, *args, **kwargs):
+        bookcases = Bookcase_book.objects.order_by(
+            'bookcase_owner').distinct('bookcase_owner')
+        books = None
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, "You didn't enter search criteria")
+                return HttpResponseRedirect(reverse('bookcases'))
+
+            queries = Q(title__icontains=query) | Q(author__icontains=query)
+            books = Book.objects.filter(queries)
+
+        context = {
+            'books': books,
+            'bookcases': bookcases,
+            }
+        return render(request, 'bookcases.html', context)
 
 
 class AddBook(View):
@@ -148,16 +161,6 @@ class DeleteBook(View):
         print(book_to_delete.deleted)
         messages.success(request, 'The book has been deleted')
         return HttpResponseRedirect(reverse('home'))
-
-
-# class SearchResultsView(ListView):
-#     model = Book
-#     template_name = "bookcases.html"
-
-#     def get_queryset(self):  
-#         query = self.request.GET.get("title")
-#         object_list = Book.objects.filter(title=query)
-#         return object_list
 
 
 class UpdateStatus(View):

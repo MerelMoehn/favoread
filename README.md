@@ -189,6 +189,8 @@ The Book model includes the following fields:
 * Featured_image: A picture of the book. A default is provided when the user does not upload an image. 
 * Created_on: The Data and Time the book was created on.
 * Approved: A True or False field, whether or not the admin has approved the book.
+* Submitted_by: A foreign key to the User that has submitted the book
+* Deleted: A True or False field, to show whether or not the book has been soft deleted. Based on advise of my mentor it was not a hard delete but a soft delete.
 The Book model also has a method that auto generates a slug based on the title of the book. 
 
 ## The Bookcase_book Model

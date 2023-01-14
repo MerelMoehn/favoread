@@ -11,12 +11,22 @@
     </div>
     <div class="row text-center justify-content-center">
         <div class="col-md-4 mb-3">
-            <form class="input-group" action="#" method="get">
-                <input name="title" class="form-control rounded" type="Search" aria-label="Search"
+            <form class="input-group" action="{% url 'bookcases' %}" method="GET">
+                <input name="q" class="form-control rounded" type="Search" aria-label="Search"
                     placeholder="Enter title...">
                 <button type="button" class="btn btn-search">search</button>
             </form>
+            <ul>
+                {% for book in books %}
+                  <li>
+                    <a href="{% url 'book_detail' book.slug  %}">
+                        <p>{{ book }}</p>
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
         </div>
+        
         <div class="row list-group mb-3">
             <div class="col-md-8 align-self-center">
                 {% for book in bookcases %}
