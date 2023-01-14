@@ -16,6 +16,7 @@ class Book(models.Model):
     featured_image = CloudinaryField('image', default='book_preview')
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
+    deleted = models.BooleanField(default=False)
 
     class Meta:
         # Display books in descending order
