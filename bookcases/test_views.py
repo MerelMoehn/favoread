@@ -1,5 +1,5 @@
 from django.test import TestCase
-from django.shortcuts import reverse
+from django.shortcuts import reverse, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
 from .models import Book, Bookcase_book
@@ -81,7 +81,9 @@ class TestViews(TestCase):
                                      'excerpt': 'testing twice'})
 
         messages = [m.message for m in get_messages(response.wsgi_request)]
-        self.assertIn('Oeps, something went wrong, try again.', messages)
+        self.assertIn(
+            'Oeps, something went wrong. Maybe this title already exists.',
+            messages)
 
     def test_can_change_status(self):
         response = self.client.post(f'/update_status/{self.tbook.id}/',
@@ -99,10 +101,23 @@ class TestViews(TestCase):
         bc_book = Bookcase_book.objects.create(bookcase_owner=self.testuser[0],
                                                book=book)
 
-        response = self.client.post(f'/delete/{book.id}/')
+        response = self.client.post(f'/delete/bookcase/{book.id}/')
 
         delete_bc_book = Bookcase_book.objects.filter(book=book.id)
         self.assertEqual(len(delete_bc_book), 0)
+
+    def test_can_delete_book(self):
+        response = self.client.post(f'/delete_book/{self.tbook.id}/')
+
+        book = get_object_or_404(Book, id=self.tbook.id)
+        book.refresh_from_db()
+        print(book.deleted)
+        messages = [m.message for m in get_messages(response.wsgi_request)]
+        self.assertIn(
+            'The book has been deleted.',
+            messages)
+        self.assertRedirects(response, '/')
+        self.assertTrue(book.deleted)
 
 
 # NOT TESTABLE - this results in error because DISTINCT IS NOT
@@ -110,4 +125,4 @@ class TestViews(TestCase):
 #     def test_get_bookcases_page(self):
 #         response = self.client.get('/bookcases/')
 #         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'bookcases.html')
+

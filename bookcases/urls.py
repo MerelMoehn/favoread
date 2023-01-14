@@ -8,7 +8,7 @@ urlpatterns = [
     path('user_bookcase/', views.UserBookcase.as_view(), name='user_bookcase'),
     path('bookcase_detail/<owner>', views.VisitBookcase.as_view(),
          name='bookcase_detail'),
-    path('delete_book/<book>', views.DeleteBook.as_view(), name='delete_book'),
+    path('delete_book/<book>/', views.DeleteBook.as_view(), name='delete_book'),
     path('delete/bookcase/<book>/', views.DeleteBookcaseBook.as_view(),
          name='delete_bookcase_book'),
     path('update_status/<book>/', views.UpdateStatus.as_view(),

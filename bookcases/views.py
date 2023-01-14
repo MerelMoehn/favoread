@@ -50,7 +50,7 @@ class SubmitBook(View):
             submit_form = SubmitForm()
             messages.error(request,
                            'Oeps, something went wrong.'
-                           'Maybe this title already exists.')
+                           ' Maybe this title already exists.')
 
         return HttpResponseRedirect(reverse('submit_book'))
 
@@ -164,11 +164,9 @@ class DeleteBook(View):
         # Sets a Book instance deleted to True (soft delete)
         book_to_delete = get_object_or_404(
             Book, id=book)
-        print(book_to_delete)
         book_to_delete.deleted = True
         book_to_delete.save()
-        print(book_to_delete.deleted)
-        messages.success(request, 'The book has been deleted')
+        messages.success(request, 'The book has been deleted.')
         return HttpResponseRedirect(reverse('home'))
 
 
