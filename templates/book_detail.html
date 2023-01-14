@@ -1,14 +1,16 @@
-{% if user.is_authenticated %}
+
 {% extends "base.html" %}
 {% block content %}
 
 <div class="container">
     <div class="row mt-5 ">
         <div class="col-md-6">
+            {% if user.is_authenticated %}
             <form action="{% url 'add_book' book.slug %}" method="POST">
                 {% csrf_token %}
                 <button class="btn btn-color" type="submit" name="book" value="{{book.slug}}">Add to Bookcase</button>
             </form>
+            {% endif %}
             <hr>
             <h1>{{ book.title }}</h1>
             <p>Author: {{ book.author }} | Submitted on: {{ book.created_on }}</p>
@@ -33,4 +35,3 @@
     </div>
 </div>
 {%endblock%}
-{%endif%}
