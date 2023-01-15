@@ -78,12 +78,16 @@ class Bookcases(View):
         query = None
         if 'q' in request.GET:
             query = request.GET['q']
-            if not query:
+            if len(query) == 0:
                 messages.error(request, "You didn't enter search criteria")
                 return HttpResponseRedirect(reverse('bookcases'))
 
             queries = Q(title__icontains=query) | Q(author__icontains=query)
             books = Book.objects.filter(queries)
+            
+            if len(books) == 0:
+                messages.error(request, "Your search did not find any matches")
+                return HttpResponseRedirect(reverse('bookcases'))
 
         # To add pagination, show 6 owners per page
         paginator = Paginator(bookcases, 6)
