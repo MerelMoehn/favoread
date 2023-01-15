@@ -16,20 +16,10 @@ li {
     list-style-type: none;
 }
 
-
-footer {
-    background-color: #A19F9E;
-    color: #F2EEED;
+/* styling for navbar */
+.funcFav{
+    font-size: 25px;
 }
-
-.footer-text{
-    color:#241F1C;
-}
-
-.socials{
-    color: #241F1C;
-}
-
 
 /* styling for navbar */
 .navbar {
@@ -39,7 +29,6 @@ footer {
 .nav-link, .navbar-brand{
     color: #F2EEED;
 }
-
 
 /* styling for buttons */
 
@@ -129,6 +118,25 @@ footer {
     color:#F2EEED;
 }
 
+.removed{
+    background-color: #9A602A;
+    color:#F2EEED;
+}
+
+
+/* styling for footer */
+footer {
+    background-color: #A19F9E;
+    color: #F2EEED;
+}
+
+.footer-text{
+    color:#241F1C;
+}
+
+.socials{
+    color: #241F1C;
+}
 
 
 
