@@ -2,16 +2,18 @@
 {% if user.is_authenticated %}
 {% block content %}
 
-<div class="container">
+<div class="container-fluid">
     <div class="row text-center">
         <div class="col mt-5">
             <h1>This is the bookcase of: {{ bc_owner.username }}</h1>
             <p>You can click on each book to see the detail page. On this detail page you can add the book to your own
                 bookcase.</p>
         </div>
+    </div>
 
-        <div class="row mt-3 mb-3 justify-content-center">
-            {% for book in books %}
+    <div class="row mt-3 mb-3 text-center justify-content-center">
+        {% for book in books %}
+        <div class="col-sm-6 col-xl-2">
             <div class="card m-2" style="max-width: 240px;">
                 <div class="card-body">
                     <div class="image-container">
@@ -32,22 +34,22 @@
                     </a>
                 </div>
             </div>
-            {% empty %}
-            <p>Sorry. There are no books in this bookcase.</p>
-            {% endfor %}
         </div>
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                {% if books.has_previous %}
-                <li><a href="?page={{ books.previous_page_number }}" class="btn btn-color page-link">&laquo; PREV </a>
-                </li>
-                {% endif %}
-                {% if books.has_next %}
-                <li><a href="?page={{ books.next_page_number }}" class="btn btn-color page-link"> NEXT</a></li>
-            </ul>
-        </nav>
-        {% endif %}
+        {% empty %}
+        <p>Sorry. There are no books in this bookcase.</p>
+        {% endfor %}
     </div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if books.has_previous %}
+            <li><a href="?page={{ books.previous_page_number }}" class="btn btn-color page-link">&laquo; PREV </a>
+            </li>
+            {% endif %}
+            {% if books.has_next %}
+            <li><a href="?page={{ books.next_page_number }}" class="btn btn-color page-link"> NEXT</a></li>
+        </ul>
+    </nav>
+    {% endif %}
 </div>
 {%endblock%}
 {%endif%}
