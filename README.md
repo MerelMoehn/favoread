@@ -129,6 +129,7 @@ This application has several features which I will highlight per page.
   - See the book details
   - Add the book to his/her own bookcase
   - Delete this book, the book is then soft deleted (chosen after consultation with mentor)
+  - If the book has been soft deleted, it will show 'This book has been deleted' on the book detail page
   - Get feedback whether the action above has succeeded or not
 
 The admin user has additional functionalities:

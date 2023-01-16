@@ -66,7 +66,7 @@
     </nav>
 
     <main class="flex-shrink-0 main-bg">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-8 offset-md-2" id="message-container">
             {% for message in messages %}
             <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
                 {{ message }}
@@ -103,10 +103,12 @@
         </div>
     </footer>
     <script>
+        let messageContainer = document.getElementById('message-container');
         setTimeout(function () {
-            let messages = document.getElementById('msg');
-            let alert = new bootstrap.Alert(messages);
+            for (let message of messageContainer.children) {
+                let alert = new bootstrap.Alert(message);
             alert.close();
+            }
         }, 2500);
     </script>
 </body>
