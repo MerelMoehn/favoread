@@ -18,11 +18,11 @@
                 <div class="card-body">
                     <div class="image-container">
                         {% if "book_preview" in book.book.featured_image.url %}
-                        <img class="card-img-top"
+                        <img class="card-img-top-bookcase"
                             src="https://res.cloudinary.com/duz5vkvkt/image/upload/v1672925793/Book_greenleave_small_ayqdym.png"
                             alt="Book with green leave">
                         {% else %}
-                        <img class="card-img-top" src=" {{ book.featured_image.url }}" alt="Image of book">
+                        <img class="card-img-top-bookcase" src=" {{ book.book.featured_image.url }}" alt="Image of book">
                         {% endif %}
                         <div class="image-flash">
                             <p class="author">Author: {{ book.book.author }}</p>

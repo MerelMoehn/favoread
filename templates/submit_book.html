@@ -16,7 +16,7 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-6 text-center">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {{ submit_book | crispy }}
                 {% csrf_token %}
                 <button class="btn btn-color mt-3 mb-5" type="submit">Submit Book</button>

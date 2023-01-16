@@ -9,10 +9,10 @@ READ_STATUS = ((0, "Not started"), (1, "Reading"), (2, "Read"))
 
 
 class Book(models.Model):
-    title = models.CharField(max_length=200, unique=True)
+    title = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=1000, unique=True)
-    author = models.CharField(max_length=100)
-    excerpt = models.TextField(max_length=50)
+    author = models.CharField(max_length=30)
+    excerpt = models.TextField(max_length=30)
     featured_image = CloudinaryField('image', default='book_preview')
     submitted_by = models.ForeignKey(User, on_delete=models.SET_NULL,
                                      related_name="submitted_by", null=True)

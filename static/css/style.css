@@ -55,6 +55,18 @@ li {
 
 
 /* styling for book cards */
+.card-img-top {
+    width: 100%;
+    height: 25vh;
+    object-fit: cover;
+    }
+
+.card-img-top-bookcase{
+    width: 100%;
+    height: 20vh;
+    object-fit: cover;
+}
+
 .book-title{
     color:#41585A;
     font-size: 18px;
@@ -67,7 +79,6 @@ li {
     font-weight: 600;
     text-decoration: underline;
 }
-
 
 .card-text{
     color:  #9A602A;
