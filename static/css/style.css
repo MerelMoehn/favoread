@@ -149,5 +149,9 @@ footer {
     color: #241F1C;
 }
 
-
-
+/* Media Query for user bookcase */
+@media only screen and (min-width: 1200px) {
+    .img-book{
+        height: 100%;
+    }
+}
