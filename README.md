@@ -261,7 +261,7 @@ Each site page has been checked with Lighthouse and the following improvements h
 * Language has been set in base.html
 * Non unique ARIA IDs are made unique
 * Remove big layout shift with buttons for user bookcase
-After these changes all pages score green numbers.
+For pages that are not rendering images, all indicators are green. However, uploading images with different sizes decrease the performance score.
 
 ### W3C CSS Validation
 The style.css code has been validated by the W3C CSS validator and passed without any errors.

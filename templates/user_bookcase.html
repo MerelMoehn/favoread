@@ -9,9 +9,9 @@
             <h1>Hi {{ user.username }}, welcome to your bookcase!</h1>
         </div>
     </div>
-    <div class="row mb-2 justify-content-center">
+    <div class="row mb-2">
         {% for book in books %}
-        <div class="col-sm-6 col-xl-4 d-flex align-items-stretch">
+        <div class="col-sm-6 col-xl-4 d-flex align-items-stretch justify-content-center">
             <div class="card m-2 p-0" style="max-width: 410px;">
                 <div class="row g-0">
                     <div class="col-xl-6 align-self-center d-flex p-2">
@@ -22,7 +22,7 @@
                         <img class="img-fluid" src=" {{ book.book.featured_image.url }}" alt="Image of book">
                         {% endif %}
                     </div>
-                    <div class="col-xl-6 align-self-center text-center">
+                    <div class="col-xl-6 text-center">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
