@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="row mt-3 mb-3 text-center justify-content-center">
+    <div class="row mt-3 mb-3 justify-content-center">
         {% for book in books %}
         <div class="col-sm-6 col-xl-2 d-flex align-items-stretch justify-content-center">
             <div class="card m-2" style="max-width: 240px;">
@@ -22,16 +22,19 @@
                             src="https://res.cloudinary.com/duz5vkvkt/image/upload/v1672925793/Book_greenleave_small_ayqdym.png"
                             alt="Book with green leave">
                         {% else %}
-                        <img class="card-img-top-bookcase" src=" {{ book.book.featured_image.url }}" alt="Image of book">
+                        <img class="card-img-top-bookcase" src=" {{ book.book.featured_image.url }}"
+                            alt="Image of book">
                         {% endif %}
                         <div class="image-flash">
                             <p class="author">Author: {{ book.book.author }}</p>
                         </div>
                     </div>
-                    <a href="{% url 'book_detail' book.book.slug  %}">
-                        <h2 class="book-title">{{ book.book.title }}</h2>
-                        <p class="card-text">{{ book.book.excerpt }}</p>
-                    </a>
+                    <div class="card-footer">
+                        <a href="{% url 'book_detail' book.book.slug  %}">
+                            <h2 class="book-title">{{ book.book.title }}</h2>
+                            <p class="card-text">{{ book.book.excerpt }}</p>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
