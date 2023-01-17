@@ -11,8 +11,8 @@
     </div>
     <div class="row mb-2 justify-content-center">
         {% for book in books %}
-        <div class="col-sm-6 col-xl-4 d-flex align-items-stretch">
-            <div class="card m-2 p-0" style="max-width: 410px;">
+        <div class="col-sm-6 col-xl-4 d-flex align-items-stretch justify-content-center">
+            <div class="card m-2 p-0" style="max-width: 400px;">
                 <div class="row g-0">
                     <div class="col-xl-6 align-self-center d-flex img-book">
                         {% if "book_preview" in book.book.featured_image.url %}
@@ -78,10 +78,10 @@
         <ul class="pagination justify-content-center">
             {% if books.has_previous %}
             <li><a href="?page={{ books.previous_page_number }}" class="btn btn-color page-link">&laquo;
-                    PREV </a></li>
+                    Prev </a></li>
             {% endif %}
             {% if books.has_next %}
-            <li><a href="?page={{ books.next_page_number }}" class="btn btn-color page-link"> NEXT
+            <li><a href="?page={{ books.next_page_number }}" class="btn btn-color page-link"> Next
                     &raquo;</a></li>
             {% endif %}
         </ul>
