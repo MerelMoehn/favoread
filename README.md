@@ -108,7 +108,7 @@ I decided to focus on creating the main back-end functionalities first before fo
 In the table below is an overview of the distinct User Stories. What I mean by that is the following, as mentioned some user stories are divided into two: FE & BE. The User Story is only named once in the table below.
 In addition, some User Stories have overlap between the EPICS, for example, messaging. These are also only named once, but may be implemented for other EPICS as well.
 
-The total number of issues (including bugs) created are: 46
+The total number of issues (including bugs) created are: 47
 
 | User Story ID | As a/an | I want to be able to... | So that I can... |
 | --- | ----------- | ----------- | ----------- |
@@ -323,6 +323,7 @@ The test description is also indicative for the action that has been done to tes
 Manual tests that have been done:
 Registration:
 - Sign up, log in and log out: succesfull
+- Authentication: unsuccesful: an not logged in user could get by pages via the urls. [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/48)
 Submitting/adding/deleting book:
 - Submitting a book, including feedback message: succesfull
 - Uploading an image while submitting a book: unsuccesful: [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/46) 
