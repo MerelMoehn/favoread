@@ -22,7 +22,7 @@ This application is built using an agile approach. Therefore, the functionalitie
 
 ## Epics & labels
 The application features were broken down into Epics and hence in User Stories. 
-For each User Story, a issue was created. The corresponding Epic was depicted via a label.
+For each User Story, an issue was created. The corresponding Epic was depicted via a label.
 There were two additional labels: Front-End, Back-End. For each User Story it was often the case that there were some BE and FE functionalities. Therefore, most User Stories were split into two User Stories, one for BE, one for FE.
 
 [All Epics/labels can be viewed here.](https://github.com/MerelMoehn/favoreads/labels)
@@ -44,7 +44,7 @@ Additional labels used:
 In the table below is an overview of the distinct User Stories. What I mean by that is the following, as mentioned some user stories are divided into two: FE & BE. The User Story is only named once in the table below.
 In addition, some User Stories have overlap between the EPICS, for example, messaging. These are also only named once, but may be implemented for other EPICS as well.
 
-The total number of issues created are: 44
+The total number of issues (including bugs) created are: 46
 
 | User Story ID | As a/an | I want to be able to... | So that I can... |
 | --- | ----------- | ----------- | ----------- |
@@ -86,7 +86,7 @@ The total number of issues created are: 44
 
 
 ## Project Planning
-The project was planned and built in four sprints each consisting of one week. The project tool used was GitHub Projects & Issues. The issues were mapped on a kanban board using Epic, and FE&BE labels.
+The project was planned and built in four sprints each consisting of one week. The project tool used was GitHub Projects & Issues. The issues were mapped on a kanban board using labels and swimming lanes.
 
 When I started working on an User Story, the story was added to the milestone and dragged and dropped into "in progress", when finished, the story was dragged & dropped into the "done" lane.
 To clarify, I only noticed when having finished 95% of my project that setting a story to 'done' did not close the story. Therefore most of the stories have the same closing date.
@@ -106,19 +106,21 @@ This application has several features which I will highlight per page.
   - Register
   - Log-in
   - Log-out
+  - Read three main functionalities
   - Go to the detail pages of three highlighted books, ordered based on last submitted
 - On the 'Submit a book' page (submit_book.html) the user can make us of the following features:
   - Fill in the form to submit a book
   - Get feedback whether the action above has succeeded or not
-- On the 'My Bookcase' page (user_bookcase.html) the user can make us of the following features:
+- On the 'My Bookcase' page (user_bookcase.html) the user can make use of the following features:
   - See all the books in his/her bookcase
   - Update the reading status of each book in the bookcase
   - Delete a book from the bookcase
-  - Receive a message when doing one of the above two actions
+  - Receive a feedback message when doing one of the above two actions
   - Navigate between pages of books in the bookcase (pagination)
 - On the 'Bookcases' page (bookcases.html) the user can make use of the following features:
-  - A search bar functionality to search for books. The user can search via title or author
-  - See a list of other user of the application
+  - A search bar functionality to search for books. The user can search via title or author. Only approved books and books that are not deleted, are displayed
+  - Get a feedback message when the criteria did not get a result
+  - See a list of other users/bookcase owners of the application
   - Click on a user to go to their bookcase
   - Navigate between pages of users in the list (pagination)
 - On the 'Bookcase detail' page (bookcase_detail.html) the user can make us of the following features:
@@ -128,8 +130,7 @@ This application has several features which I will highlight per page.
 - On the 'Book detail' page (book_detail.html) the user can make use of the following features:
   - See the book details
   - Add the book to his/her own bookcase
-  - Delete this book, the book is then soft deleted (chosen after consultation with mentor)
-  - If the book has been soft deleted, it will show 'This book has been deleted' on the book detail page
+  - Delete this book, the book is then soft deleted (chosen after consultation with mentor). One can only (soft) when he/she is the one that has uploaded the book. The person that has uploaded the book is shown after the submit date
   - Get feedback whether the action above has succeeded or not
 
 The admin user has additional functionalities:
@@ -163,7 +164,7 @@ The design of the FavoReads application is based on the image below. Four colour
 - The typography used within the application is the following font-family: Arial, Helvetica, sans-serif. These fonts were used because they are a fairly safe choice and do not distract the attention from the books. 
 
 ## Cards
-- I have used Bootstrap cards to visually organise content and to make the bookcase pages look like an actual bookcase.
+- I have used Bootstrap cards to visually organise content and to make the bookcase pages look like an actual bookcase. I have used both horizontal as vertical cards.
 
 ## Icons
 - I used icons from Font Awesome website. They are used on the index page to depict the three main features of the website.
@@ -257,22 +258,22 @@ The following files were passed through the linter:
 ### Lighthouse
 Each site page has been checked with Lighthouse and the following improvements have been made:
 * Using smaller images to load page faster
-* include meta tag on page
+* include meta tag on base.html
 * Language has been set in base.html
 * Non unique ARIA IDs are made unique
 * Remove big layout shift with buttons for user bookcase
-For pages that are not rendering images, all indicators are green. However, uploading images with different sizes decrease the performance score.
+For pages that are not rendering images, all indicators are green. However, uploading images with different sizes decreases the performance score.
 
 ### W3C CSS Validation
 The style.css code has been validated by the W3C CSS validator and passed without any errors.
 
 ## Manual Testing
-Most manual testing has been done to check responsiveness and to complete a final walkthrough of the functionalities. This resulted in the bug to fix the responsiveness of the 'My Bookcase page'. [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/41) 
+Most manual testing has been done to check responsiveness and to complete a final walkthrough of the functionalities. This resulted in the bug to fix the responsiveness of the 'My Bookcase, Bookcases, and Sign-up page'. [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/41) 
 
 ## Automated testing
 In total there are 22 one automated test which cover 95% of the application.
 One of the views: Bookcases, could not be tested because the local database does not support DISTINCT.
-DISTINCT is used for getting the bookcase_owners only once, to display the list of bookcases.
+DISTINCT is used for getting the bookcase_owners only once, to display the list of users with a bookcase.
 <img src="media/readme_images/FavoReads_automated_tests.png">
 All tests pass. 
 <img src="media/readme_images/FavoReads_aut_test_results.png">

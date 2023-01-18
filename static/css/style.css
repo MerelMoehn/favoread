@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Roboto, sans-serif;
     color: #241F1C;
     font-size: 18px;
 }
@@ -8,7 +11,7 @@ a {
     text-decoration: none;
 }
 
-.container-fluid{
+.container-fluid {
     overflow: hidden;
 }
 
@@ -17,7 +20,7 @@ li {
 }
 
 /* styling for navbar */
-.funcFav{
+.funcFav {
     font-size: 25px;
 }
 
@@ -26,29 +29,30 @@ li {
     background-color: #41585A;
 }
 
-.nav-link, .navbar-brand{
+.nav-link,
+.navbar-brand {
     color: #F2EEED;
 }
 
 /* styling for buttons */
 
-.btn-color{
+.btn-color {
     background-color: #9A602A;
     color: #F7F7F7;
 }
 
-.btn-delete{
+.btn-delete {
     background-color: #9A602A;
     color: #F7F7F7;
     font-size: 13px;
 }
 
-.btn-search{
+.btn-search {
     border-color: #9A602A;
     color: #9A602A;
 }
 
-.btn-add{
+.btn-add {
     background-color: #41585A;
     color: #F7F7F7;
 }
@@ -59,45 +63,46 @@ li {
     width: 100%;
     height: 25vh;
     object-fit: cover;
-    }
+}
 
-.card-img-top-bookcase{
+.card-img-top-bookcase {
     width: 100%;
     height: 20vh;
     object-fit: cover;
 }
 
-.book-title{
-    color:#41585A;
+.book-title {
+    color: #41585A;
+    font-weight: 400;
     font-size: 18px;
     text-decoration: underline;
 }
 
-.author{
-    color:#41585A;
+.author {
+    color: #41585A;
     font-size: 16px;
     font-weight: 600;
     text-decoration: underline;
 }
 
-.card-text{
-    color:  #9A602A;
+.card-text {
+    color: #9A602A;
     font-style: italic;
 }
 
 /* Styling for overview bookcase owners */
-.list-group-item{
-    color:#41585A;
+.list-group-item {
+    color: #41585A;
     font-size: 18px;
     font-weight: 500;
 }
 
-.badge{
-    background-color:#9A602A;
+.badge {
+    background-color: #9A602A;
 }
 
 /* styling for user bookcase */
-.btn-drop{
+.btn-drop {
     background-color: #F2EEED;
     border-color: #A19F9E;
     font-size: 13px;
@@ -107,31 +112,31 @@ li {
     font-size: 13px;
 }
 
-.book-title-bookcase{
+.book-title-bookcase {
     font-size: 14px;
 }
 
-.cover{
+.cover {
     object-fit: fill;
 }
 
 
 /* Styling for messages */
-.success{
+.success {
     background-color: #A19F9E;
     border-color: #F2EEED;
-    color:#241F1C;
+    color: #241F1C;
 }
 
-.error{
+.error {
     background-color: #380205;
     border-color: #F2EEED;
-    color:#F2EEED;
+    color: #F2EEED;
 }
 
-.removed{
+.removed {
     background-color: #9A602A;
-    color:#F2EEED;
+    color: #F2EEED;
 }
 
 
@@ -141,18 +146,18 @@ footer {
     color: #F2EEED;
 }
 
-.footer-text{
-    color:#241F1C;
+.footer-text {
+    color: #241F1C;
 }
 
-.socials{
+.socials {
     color: #241F1C;
 }
 
 /* Media Query for user bookcase */
 @media only screen and (min-width: 1200px) {
-    .img-book{
+    .img-book {
         height: 100%;
         object-fit: cover;
     }
- }
+}
