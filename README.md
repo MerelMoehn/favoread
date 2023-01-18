@@ -15,6 +15,57 @@ The app can be accessed via the following link: [Click to go to Website](https:/
 
 <img src="media/readme_images/FavoReads_Impression.png">
 
+## Repository
+
+[Find the project repository here.](https://github.com/MerelMoehn/favoreads)
+
+# Table of Contents
+
+## Contents
+- [General introduction and instructions](#general-introduction-and-instructions)
+  * [Project Approach](#project-approach)
+  * [Epics & labels](#epics-&-labels)
+  * [Project Planning](#project-planning)
+- [User stories](#user-stories)
+- [Features](#features)
+  * [Future Features](#future-features)
+- [Design & wireframing](#design-&-wireframing)
+  * [Colourscheme](#colourscheme)
+  * [WireFrames](#epics-&-labels)
+  * [Typography](#typograpy)
+  * [Cards](#icons)
+  * [Icons](#cards)
+  * [Imagery](#imagery)
+- [Data Model](#the-data-model)
+  * [The Book model](#the-book-model)
+  * [The Bookcase_book model](#the-bookcase_book-model)
+- [Technology Used](#technology-used)
+  * [Languages used](#languages-used)
+  * [Frameworks & Libraries used](#frameworks-and-libraries-used)
+- [Testing](#testing)
+  * [Validators](#validators)
+    * [CI Python Linter](#ci-python-linter)
+    * [Lighthouse](#lighthouse)
+    * [W3C CSS validator](#w3c-css-validation)
+  * [Manual Testing](#manual-testing)
+  * [Automated Testing](#automated-testing)
+  * [Bugs found and solved](#bugs-found-and-solved)
+    * [Unsolved bugs](#unsolved-bugs)
+- [Deployment](#deployment)
+  * [Heroku](#heroku)
+  * [ElephantSQL](#elephantsql)
+  * [Creating a local clone](#creating-a-local-clone)
+- [Credits](#credits)
+  * [Code](#code)
+    * [Code Institute](#code-institute)
+    * [Django](#django)
+    * [Bootstrap](#bootstrap)
+  * [Acknowledgments](#acknowledgements)
+
+
+
+
+
 # General introduction and instructions
 
 ## Project Approach
@@ -39,7 +90,20 @@ Additional labels used:
 - Front-end: to label user stories focused on the Front-end
 - Back-end: to label user stories focused on the Back-end
 
-## User stories
+## Project Planning
+The project was planned and built in four sprints each consisting of one week. The project tool used was GitHub Projects & Issues. The issues were mapped on a kanban board using labels and swimming lanes.
+
+When I started working on an User Story, the story was added to the milestone and dragged and dropped into "in progress", when finished, the story was dragged & dropped into the "done" lane.
+To clarify, I only noticed when having finished 95% of my project that setting a story to 'done' did not close the story. Therefore most of the stories have the same closing date.
+
+I decided to focus on creating the main back-end functionalities first before focusing on front-end. This decision was made based on the availability of support during the Christmas holidays. 
+
+[View stories/bugs included in sprint 1.](https://github.com/MerelMoehn/favoreads/milestone/1?closed=1)
+[View stories/bugs included in sprint 2.](https://github.com/MerelMoehn/favoreads/milestone/2?closed=1)
+[View stories/bugs included in sprint 3.](https://github.com/MerelMoehn/favoreads/milestone/3)
+[View stories/bugs included in sprint 4.](https://github.com/MerelMoehn/favoreads/milestone/4)
+
+# User stories
 
 In the table below is an overview of the distinct User Stories. What I mean by that is the following, as mentioned some user stories are divided into two: FE & BE. The User Story is only named once in the table below.
 In addition, some User Stories have overlap between the EPICS, for example, messaging. These are also only named once, but may be implemented for other EPICS as well.
@@ -83,21 +147,6 @@ The total number of issues (including bugs) created are: 46
 | 27| Developer | Create Wireframes | Ensure my application is properly designed | 
 | 28 | Developer | Create a LucidChart Data Model | Ensure my Data Models are designed & documented correctly | 
 | 29 | Developer | Document in a ReadMe file | Ensure my application is documented correctly & sufficiently | 
-
-
-## Project Planning
-The project was planned and built in four sprints each consisting of one week. The project tool used was GitHub Projects & Issues. The issues were mapped on a kanban board using labels and swimming lanes.
-
-When I started working on an User Story, the story was added to the milestone and dragged and dropped into "in progress", when finished, the story was dragged & dropped into the "done" lane.
-To clarify, I only noticed when having finished 95% of my project that setting a story to 'done' did not close the story. Therefore most of the stories have the same closing date.
-
-I decided to focus on creating the main back-end functionalities first before focusing on front-end. This decision was made based on the availability of support during the Christmas holidays. 
-
-[View stories/bugs included in sprint 1.](https://github.com/MerelMoehn/favoreads/milestone/1?closed=1)
-[View stories/bugs included in sprint 2.](https://github.com/MerelMoehn/favoreads/milestone/2?closed=1)
-[View stories/bugs included in sprint 3.](https://github.com/MerelMoehn/favoreads/milestone/3)
-[View stories/bugs included in sprint 4.](https://github.com/MerelMoehn/favoreads/milestone/4)
-
 
 # Features
 This application has several features which I will highlight per page.
@@ -159,9 +208,17 @@ The design of the FavoReads application is based on the image below. Four colour
 * Color for text: #241F1C
 <img src="media/readme_images/DesignColours_favoreads.png">
 
+## WireFrames
+[Click here for related user story.](https://github.com/MerelMoehn/favoreads/issues/20)
+The wireframes created for this project were made in the online tool Miro. 
+
+The wireframes were used as a rough sketch of what the application was meant to do and look like. This included the page navigation, the different pages needed, and a rough sketch of the design.
+After initial set up of the main features the design was further implemented based on the design as described above.
+<img src="media/readme_images/FavoReads Wireframing (1).jpg">
+
 ## Typography
 
-- The typography used within the application is the following font-family: Arial, Helvetica, sans-serif. These fonts were used because they are a fairly safe choice and do not distract the attention from the books. 
+- The typography used within the application is the following font-family: Roboto, sans-serif. These fonts were used because they are a fairly safe and modern choice and do not distract the attention from the books. 
 
 ## Cards
 - I have used Bootstrap cards to visually organise content and to make the bookcase pages look like an actual bookcase. I have used both horizontal as vertical cards.
@@ -174,14 +231,6 @@ The design of the FavoReads application is based on the image below. Four colour
 - Images are mostly displayed within Bootstrap cards to mock the idea of a bookcase depicting multiple books next to each other.
 - The user is able to provide an image of the book when submitting a book. When no book is uploaded the default book image is used.
 - The images have been downloaded from Unsplash.com
-
-## WireFrames
-[Click here for related user story.](https://github.com/MerelMoehn/favoreads/issues/20)
-The wireframes created for this project were made in the online tool Miro. 
-
-The wireframes were used as a rough sketch of what the application was meant to do and look like. This included the page navigation, the different pages needed, and a rough sketch of the design.
-After initial set up of the main features the design was further implemented based on the design as described above.
-<img src="media/readme_images/FavoReads Wireframing (1).jpg">
 
 # Data model
 [Click here for related user story.](https://github.com/MerelMoehn/favoreads/issues/14)
