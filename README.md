@@ -317,7 +317,28 @@ For pages that are not rendering images, all indicators are green. However, uplo
 The style.css code has been validated by the W3C CSS validator and passed without any errors.
 
 ## Manual Testing
-Most manual testing has been done to check responsiveness and to complete a final walkthrough of the functionalities. This resulted in the bug to fix the responsiveness of the 'My Bookcase, Bookcases, and Sign-up page'. [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/41) 
+In this section I explain what manual testing has been done. Note that I am referring to manual testing after the main development stage was finished. Bugs found during development were handled immediately. This section shows the test that were all expected to be succesfull after development, but where still some bugs were found. 
+The test description is also indicative for the action that has been done to test it. Meaning, for the test: 'Sign up, log-in, log-out' I'm testing these functionalities by signing up, loggin-in, and logging-out.
+
+Manual tests that have been done:
+Registration:
+- Sign up, log in and log out: succesfull
+Submitting/adding/deleting book:
+- Submitting a book, including feedback message: succesfull
+- Uploading an image while submitting a book: unsuccesful: [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/46) 
+- Soft deleting books, and deleting book from bookcase, including feedback message: succesfull
+- Updating the reading status of a user's own books: succesfull
+- Approving a book by the admin in the admin panel: succesfull
+- Adding a book the one's bookcase, including feedback message: succesfull
+Book Search:
+- Search for a book based on title or author: succesfull, but adjusted the placeholder text from 'Enter title' to 'Enter title or author'.
+- Get feedback message when no search criteria is entered: succesfull
+- Get feedback message when no match has been found: succesfull
+Socials:
+- Links of socials open in blank page: succesfull
+General site functionality:
+- Pagination: unsuccesful. Pagination was not working on the bookcases page. [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/47) 
+- Responsiveness, mainly focused on mobile. This resulted in multiple bugs to fix the responsiveness of the 'My Bookcase, Bookcases, Bookcase_detail and Sign-up page'. [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/41) 
 
 ## Automated testing
 In total there are 22 one automated test which cover 95% of the application.
