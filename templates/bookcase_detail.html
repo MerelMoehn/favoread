@@ -25,14 +25,14 @@
                         <img class="card-img-top-bookcase" src=" {{ book.book.featured_image.url }}"
                             alt="Image of book">
                         {% endif %}
-                        <div class="image-flash">
-                            <p class="author text-truncate">Author: {{ book.book.author }}</p>
-                        </div>
+                        <a href="{% url 'book_detail' book.book.slug  %}">
+                            <div class="image-flash">
+                                <p class="author text-truncate">Author: {{ book.book.author }}</p>
+                            </div>
                     </div>
                     <div class="card-footer p-0">
-                        <a href="{% url 'book_detail' book.book.slug  %}">
-                            <h2 class="book-title">{{ book.book.title }}</h2>
-                            <p class="card-text">{{ book.book.excerpt }}</p>
+                        <h2 class="book-title">{{ book.book.title }}</h2>
+                        <p class="card-text">{{ book.book.excerpt }}</p>
                         </a>
                     </div>
                 </div>
