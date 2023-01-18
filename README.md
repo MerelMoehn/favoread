@@ -163,7 +163,7 @@ This application has several features which I will highlight per page.
 - On the 'My Bookcase' page (user_bookcase.html) the user can make use of the following features:
   - See all the books in his/her bookcase
   - Update the reading status of each book in the bookcase
-  - Delete a book from the bookcase
+  - Delete a book from the bookcase, this book is then deleted from the Bookcase_book model
   - Receive a feedback message when doing one of the above two actions
   - Navigate between pages of books in the bookcase (pagination)
 - On the 'Bookcases' page (bookcases.html) the user can make use of the following features:
