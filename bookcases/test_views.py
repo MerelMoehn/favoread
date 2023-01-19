@@ -118,6 +118,19 @@ class TestViews(TestCase):
         self.assertRedirects(response, '/')
         self.assertTrue(book.deleted)
 
+    def test_unauthorized_user_access(self):
+        self.client.logout()
+
+        response = self.client.get('/submit_book/')
+        response = self.client.get(f'/{self.tbook.slug}/')
+        response = self.client.get('/user_bookcase/')
+        response = self.client.get('/bookcases/')
+        response = self.client.get(
+            f'/bookcase_detail/{self.tbookcase_book.bookcase_owner.id}'
+            )
+        messages = [m.message for m in get_messages(response.wsgi_request)]
+
+        self.assertEqual(len(messages), 5)
 
 # NOT TESTABLE - this results in error because DISTINCT IS NOT
 #  SUPPORTED in local DB

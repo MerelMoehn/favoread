@@ -21,13 +21,18 @@ class SubmitBook(View):
 
     def get(self, request, *args, **kwargs):
         # Render SubmitForm to user to submit a book
-        return render(
-            request,
-            'submit_book.html',
-            {
-                "submit_book": SubmitForm()
-            }
-        )
+        if request.user.is_authenticated:
+            return render(
+                request,
+                'submit_book.html',
+                {
+                    "submit_book": SubmitForm()
+                }
+            )
+        else:
+            messages.error(request,
+                           "Only logged-in users can access this page!")
+            return HttpResponseRedirect('home')
 
     def post(self, request, *args, **kwargs):
 
@@ -58,48 +63,59 @@ class SubmitBook(View):
 class BookDetail(View):
     def get(self, request, slug, *args, **kwargs):
         # Gets a specific book and shows the details
-        queryset = Book.objects.filter(approved=True)
-        book = get_object_or_404(queryset, slug=slug)
+        if request.user.is_authenticated:
+            queryset = Book.objects.filter(approved=True)
+            book = get_object_or_404(queryset, slug=slug)
 
-        return render(
-            request,
-            "book_detail.html",
-            {
-                "book": book,
-            },
-        )
+            return render(
+                request,
+                "book_detail.html",
+                {
+                    "book": book,
+                },
+            )
+        else:
+            messages.error(request,
+                           "Only logged-in users can access this page!")
+            return HttpResponseRedirect('home')
 
 
 class Bookcases(View):
     def get(self, request, *args, **kwargs):
-        bookcases = Bookcase_book.objects.order_by(
-            'bookcase_owner').distinct('bookcase_owner')
-        books = None
-        query = None
-        if 'q' in request.GET:
-            query = request.GET['q']
-            if len(query) == 0:
-                messages.error(request, "You didn't enter search criteria")
-                return HttpResponseRedirect(reverse('bookcases'))
+        if request.user.is_authenticated:
+            bookcases = Bookcase_book.objects.order_by(
+                'bookcase_owner').distinct('bookcase_owner')
+            books = None
+            query = None
+            if 'q' in request.GET:
+                query = request.GET['q']
+                if len(query) == 0:
+                    messages.error(request, "You didn't enter search criteria")
+                    return HttpResponseRedirect(reverse('bookcases'))
 
-            queries = Q(title__icontains=query) | Q(author__icontains=query)
-            books = Book.objects.filter(queries, approved=True)
+                queries = Q(title__icontains=query) | Q(author__icontains=query)
+                books = Book.objects.filter(queries, approved=True)
 
-            if len(books) == 0:
-                messages.error(request, "Your search did not find any matches")
-                return HttpResponseRedirect(reverse('bookcases'))
+                if len(books) == 0:
+                    messages.error(request,
+                                   "Your search did not find any matches")
+                    return HttpResponseRedirect(reverse('bookcases'))
 
-        # To add pagination, show 6 owners per page
-        paginator = Paginator(bookcases, 6)
-        page_number = request.GET.get('page')
-        bookcases = paginator.get_page(page_number)
+            # To add pagination, show 6 owners per page
+            paginator = Paginator(bookcases, 6)
+            page_number = request.GET.get('page')
+            bookcases = paginator.get_page(page_number)
 
-        context = {
-            'books': books,
-            'bookcases': bookcases,
-            'search_term': query,
-            }
-        return render(request, 'bookcases.html', context)
+            context = {
+                'books': books,
+                'bookcases': bookcases,
+                'search_term': query,
+                }
+            return render(request, 'bookcases.html', context)
+        else:
+            messages.error(request,
+                           "Only logged-in users can access this page!")
+            return HttpResponseRedirect('home')
 
 
 class AddBook(View):
@@ -128,25 +144,30 @@ class UserBookcase(View):
     def get(self, request, *args, **kwargs):
         # Gets all the instances of Bookcase_book for logged-in user
         # to display the bookcase
-        current_owner = request.user
-        bookcase_books = Bookcase_book.objects.filter(
-            bookcase_owner=current_owner, book__approved=True,
-            book__deleted=False)
+        if request.user.is_authenticated:
+            current_owner = request.user
+            bookcase_books = Bookcase_book.objects.filter(
+                bookcase_owner=current_owner, book__approved=True,
+                book__deleted=False)
 
-        # To add pagination, show 9 books per page
-        paginator = Paginator(bookcase_books, 9)
+            # To add pagination, show 9 books per page
+            paginator = Paginator(bookcase_books, 9)
 
-        page_number = request.GET.get('page')
-        bookcase_books = paginator.get_page(page_number)
+            page_number = request.GET.get('page')
+            bookcase_books = paginator.get_page(page_number)
 
-        return render(
-            request,
-            "user_bookcase.html",
-            {
-                "books": bookcase_books,
-                "user": current_owner,
-            },
-        )
+            return render(
+                request,
+                "user_bookcase.html",
+                {
+                    "books": bookcase_books,
+                    "user": current_owner,
+                },
+            )
+        else:
+            messages.error(request,
+                           "Only logged-in users can access this page!")
+            return HttpResponseRedirect('home')
 
 
 class DeleteBookcaseBook(View):
@@ -192,21 +213,26 @@ class UpdateStatus(View):
 class VisitBookcase(View):
     # To display bookcases of other users
     def get(self, request, owner, *args, **kwargs):
-        bookcase_books = Bookcase_book.objects.filter(
-            bookcase_owner=owner, book__approved=True, book__deleted=False)
-        selected_owner = get_object_or_404(User, id=owner)
+        if request.user.is_authenticated:
+            bookcase_books = Bookcase_book.objects.filter(
+                bookcase_owner=owner, book__approved=True, book__deleted=False)
+            selected_owner = get_object_or_404(User, id=owner)
 
         # To add pagination, show 9 books per page
-        paginator = Paginator(bookcase_books, 9)
+            paginator = Paginator(bookcase_books, 9)
 
-        page_number = request.GET.get('page')
-        bookcase_books = paginator.get_page(page_number)
+            page_number = request.GET.get('page')
+            bookcase_books = paginator.get_page(page_number)
 
-        return render(
-            request,
-            "bookcase_detail.html",
-            {
-                "books": bookcase_books,
-                "bc_owner": selected_owner,
-            },
-        )
+            return render(
+                request,
+                "bookcase_detail.html",
+                {
+                    "books": bookcase_books,
+                    "bc_owner": selected_owner,
+                },
+            )
+        else:
+            messages.error(request,
+                           "Only logged-in users can access this page!")
+            return HttpResponseRedirect('home')
