@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
+from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
@@ -32,7 +33,7 @@ class SubmitBook(View):
         else:
             messages.error(request,
                            "Only logged-in users can access this page!")
-            return HttpResponseRedirect('home')
+            return redirect(reverse('home'))
 
     def post(self, request, *args, **kwargs):
 
@@ -77,7 +78,7 @@ class BookDetail(View):
         else:
             messages.error(request,
                            "Only logged-in users can access this page!")
-            return HttpResponseRedirect('home')
+            return redirect(reverse('home'))
 
 
 class Bookcases(View):
@@ -93,7 +94,8 @@ class Bookcases(View):
                     messages.error(request, "You didn't enter search criteria")
                     return HttpResponseRedirect(reverse('bookcases'))
 
-                queries = Q(title__icontains=query) | Q(author__icontains=query)
+                queries = Q(
+                    title__icontains=query) | Q(author__icontains=query)
                 books = Book.objects.filter(queries, approved=True)
 
                 if len(books) == 0:
@@ -115,7 +117,7 @@ class Bookcases(View):
         else:
             messages.error(request,
                            "Only logged-in users can access this page!")
-            return HttpResponseRedirect('home')
+            return redirect(reverse('home'))
 
 
 class AddBook(View):
@@ -167,7 +169,7 @@ class UserBookcase(View):
         else:
             messages.error(request,
                            "Only logged-in users can access this page!")
-            return HttpResponseRedirect('home')
+            return redirect(reverse('home'))
 
 
 class DeleteBookcaseBook(View):
@@ -235,4 +237,4 @@ class VisitBookcase(View):
         else:
             messages.error(request,
                            "Only logged-in users can access this page!")
-            return HttpResponseRedirect('home')
+            return redirect(reverse('home'))
