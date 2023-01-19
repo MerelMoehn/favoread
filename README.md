@@ -8,7 +8,7 @@ In this document I will explain the reason and approach behind the FavoReads app
 
 FavoReads is an application where users can create their own online bookcase while also being able to see the bookcases of other users. 
 
-The last update to this file was: **January 14, 2023**
+The last update to this file was: **January 19, 2023**
 
 # Deployed project
 The app can be accessed via the following link: [Click to go to Website](https://favoreads.herokuapp.com/) 
@@ -323,7 +323,7 @@ The test description is also indicative for the action that has been done to tes
 Manual tests that have been done:
 Registration:
 - Sign up, log in and log out: succesfull
-- Authentication: unsuccesful: an not logged in user could get by pages via the urls. [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/48)
+- Authentication: unsuccesful: a not logged in user could get by pages via the urls. [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/48)
 Submitting/adding/deleting book:
 - Submitting a book, including feedback message: succesfull
 - Uploading an image while submitting a book: unsuccesful: [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/46) 
@@ -342,12 +342,12 @@ General site functionality:
 - Responsiveness, mainly focused on mobile. This resulted in multiple bugs to fix the responsiveness of the 'My Bookcase, Bookcases, Bookcase_detail and Sign-up page'. [Go to bug.](https://github.com/MerelMoehn/favoreads/issues/41) 
 
 ## Automated testing
-In total there are 22 one automated test which cover 95% of the application.
+In total there are 23 automated tests which cover 95% of the application.
 One of the views: Bookcases, could not be tested because the local database does not support DISTINCT.
 DISTINCT is used for getting the bookcase_owners only once, to display the list of users with a bookcase.
 <img src="media/readme_images/FavoReads_automated_tests.png">
 All tests pass. 
-<img src="media/readme_images/FavoReads_aut_test_results.png">
+<img src="media/readme_images/FavoReads_automated_testresults.png">
 
 ## Bugs found and solved
 Throughout the project there were multiple bugs found and solved. These bugs were logged on the GitHub project and can be reviewed via the following link: [Click here to review the bugs.](https://github.com/MerelMoehn/favoreads/issues?q=label%3Abug+is%3Aclosed) 
