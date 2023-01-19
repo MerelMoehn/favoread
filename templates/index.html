@@ -45,17 +45,16 @@
                 </div>
                 <div class="row d-flex justify-content-center">
                 {% for book in book_list %}
-                <div class="col-ms-6 col-md-4 d-flex justify-content-center">
-                    <div class="card m-3" style="max-width: 250px;min-width: 40%;">
+                <div class="col-md-6 col-lg-4 d-flex justify-content-center">
+                    <div class="card m-3" style="max-width: 250px;min-width: 50%;">
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "book_preview" in book.featured_image.url %}
                                 <img class="card-img-top"
                                     src=https://res.cloudinary.com/duz5vkvkt/image/upload/v1672925793/Book_greenleave_small_ayqdym.png
-                                    alt="Book with green leave">
+                                     alt="Book with green leave">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ book.featured_image.url }}" alt="Image of book"
-                                alt="Image of Book">
+                                <img class="card-img-top" src=" {{ book.featured_image.url }}" alt="Image of book">
                                 {% endif %}
                                 <div class="image-flash">
                                 </div>
